@@ -1,8 +1,14 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/_ViewStart.cshtml";
+﻿@{
+    ViewBag.Title = "EGO - Login";
 }
-
-<h2>Index</h2>
-
+<h2>Login</h2>
+@using (Html.BeginForm("Authenticate", "Login", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="email">Email</label>
+        @Html.TextBox("email", null, new {@class="form-control", @placeholder="Enter Email", @required="true", @type="email"})
+        <label for="password">Password</label>
+        @Html.TextBox("password", null, new { @class = "form-control", @placeholder = "Enter Password", @required = "true", @type = "password" })
+        <input type="submit" value="Submit" class="btn btn-primary"/>
+    </div>
+}

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
 
 namespace ErieGarbageOnline.Models.DatabaseModels
 {
@@ -12,5 +8,16 @@ namespace ErieGarbageOnline.Models.DatabaseModels
         public DbSet<Customer> Customers { get; set; } 
         public DbSet<Bill> Bills { get; set; } 
         public DbSet<Message> Messages { get; set; } 
+        private static readonly EGODatabase Data = new EGODatabase();
+
+        public static EGODatabase Create()
+        {
+            return Data;
+        }
+
+        private EGODatabase()
+        {
+            
+        }
     }
 }

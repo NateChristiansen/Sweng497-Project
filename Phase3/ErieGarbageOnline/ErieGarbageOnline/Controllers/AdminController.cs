@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using ErieGarbageOnline.Utilities;
 
 namespace ErieGarbageOnline.Controllers
 {
-    public class AdminController : SharedController
+    [Filter(FilterType.Admin)]
+    public class AdminController : ShareController
     {
+
     }
 }
