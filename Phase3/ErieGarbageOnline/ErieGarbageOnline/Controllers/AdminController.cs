@@ -2,7 +2,7 @@
 
 namespace ErieGarbageOnline.Controllers
 {
-    [Filter(FilterType.Admin)]
+    [Utilities.Filter(FilterType.Admin)]
     public class AdminController : ShareController
     {
 
