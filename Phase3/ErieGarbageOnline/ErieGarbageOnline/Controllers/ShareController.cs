@@ -2,7 +2,6 @@
 
 namespace ErieGarbageOnline.Controllers
 {
-    [Authorize]
     public abstract class ShareController : Controller
     {
         // GET: Shared
