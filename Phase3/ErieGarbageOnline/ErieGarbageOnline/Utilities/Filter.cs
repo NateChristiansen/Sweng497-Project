@@ -64,7 +64,7 @@ namespace ErieGarbageOnline.Utilities
     {
         public override void ExecuteResult(ControllerContext context)
         {
-            context.RequestContext.HttpContext.Response.RedirectToRoute("Login");
+            context.RequestContext.HttpContext.Response.RedirectToRoute(new {controller="Login", action="Index"});
         }
     }
 }
