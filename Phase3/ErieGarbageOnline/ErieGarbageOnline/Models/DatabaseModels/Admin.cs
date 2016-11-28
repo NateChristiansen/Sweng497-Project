@@ -11,7 +11,10 @@ namespace ErieGarbageOnline.Models.DatabaseModels
         public string Lastname { get; set; }
         public bool CheckValidity()
         {
-            throw new NotImplementedException();
+            if (Firstname == null) return false;
+            if (Lastname == null) return false;
+            if (Email == null) return false;
+            return true;
         }
     }
 }

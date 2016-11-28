@@ -14,7 +14,6 @@ namespace ErieGarbageOnline.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var x = new Message();
             // if user is logged in, retrieve their info and return them to the correct page
             var model = Session["User"] as LoginModel;
             if (model != null)
@@ -38,7 +37,7 @@ namespace ErieGarbageOnline.Controllers
             }
             ModelState.AddModelError("LoginError", "Error Message");
             
-            return null;
+            return RedirectToAction("Index");
         }
 
         private bool AuthenticateUser(LoginModel model)

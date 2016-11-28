@@ -1,10 +1,14 @@
-﻿using ErieGarbageOnline.Utilities;
+﻿using System.Web.Mvc;
+using ErieGarbageOnline.Utilities;
 
 namespace ErieGarbageOnline.Controllers
 {
-    [Filter(FilterType.Admin)]
+    [Utilities.Filter(FilterType.Admin)]
     public class AdminController : ShareController
     {
-
+        public override ActionResult Index()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
