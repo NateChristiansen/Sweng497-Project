@@ -13,7 +13,9 @@ namespace ErieGarbageOnline.Controllers
         // GET: Login
         public ActionResult Index()
         {
+            var w = AppDomain.CurrentDomain.GetData("DataDirectory");
             var x = _database.Admins.ToList();
+            var y = _database.Database.Connection.ConnectionString;
             // if user is logged in, retrieve their info and return them to the correct page
             var model = Session["User"] as LoginModel;
             if (model != null)
