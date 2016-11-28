@@ -22,8 +22,8 @@ namespace ErieGarbageOnline.Controllers
         public ActionResult CreateNewAdmin(AdminModel admin)
         {
             // create admin from front end model
-            var newAdmin = new Admin() {Email = admin.Email, Firstname = admin.Firstname, Lastname = admin.Lastname};
-
+            var newAdmin = new Admin() {Email = admin.Email, Password = admin.Password, Firstname = admin.Firstname, Lastname = admin.Lastname};
+            
             if (AuthenticateNewAdmin(newAdmin))
             {
                 _database.Admins.Add(newAdmin);
@@ -34,6 +34,24 @@ namespace ErieGarbageOnline.Controllers
             return Json("admin could not be authenticated and not added to DB.");
         }
 
+        // moves to the admin creation page
+        public ActionResult AdminCreation()
+        {
+            return View();
+        }
+
+        // moves to admin messaging center
+        public ActionResult MessagingCenter()
+        {
+            return View();
+        }
+
+        // moves to customer view
+        public ActionResult DuePayments()
+        {
+            return View();
+        }
+
         /// <summary>
         /// Checks to see if a new admin is valid
         /// </summary>
@@ -41,10 +59,16 @@ namespace ErieGarbageOnline.Controllers
         /// <returns></returns>
         private bool AuthenticateNewAdmin(Admin newAdmin)
         {
+            if (newAdmin.Firstname == null || newAdmin.Lastname == null || newAdmin.Email == null)
+                return false;
+
             if (_database.Admins.Any(admin => admin.Email.Equals(newAdmin.Email)))
                 return false;
 
             if (_database.Customers.Any(customer => customer.Email.Equals(newAdmin.Email)))
+                return false;
+
+            if (newAdmin.Password.Equals(""))
                 return false;
 
             return true;

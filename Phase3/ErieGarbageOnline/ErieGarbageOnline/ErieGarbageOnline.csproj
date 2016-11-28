@@ -126,6 +126,7 @@
     <Content Include="Content\bootstrap\bootstrap.css.map" />
     <Content Include="Content\bootstrap\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap\bootstrap-theme.css.map" />
+    <Content Include="Scripts\application\Admin.js" />
     <Content Include="Scripts\application\Customer.js" />
     <Content Include="Scripts\libraries\angular\angular-mocks.js" />
     <Content Include="Scripts\libraries\angular\angular.js" />
@@ -151,9 +152,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-
     <Compile Include="Models\AdminModel.cs" />
-
     <Compile Include="Migrations\201611201743223_InitialCreate.cs" />
     <Compile Include="Migrations\201611201743223_InitialCreate.Designer.cs">
       <DependentUpon>201611201743223_InitialCreate.cs</DependentUpon>
@@ -164,7 +163,6 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomerModel.cs" />
-
     <Compile Include="Models\DatabaseModels\Admin.cs" />
     <Compile Include="Models\DatabaseModels\Bill.cs" />
     <Compile Include="Models\DatabaseModels\Customer.cs" />
@@ -188,6 +186,9 @@
     <Content Include="Scripts\libraries\jquery\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\libraries\jquery\jquery-3.1.1.min.map" />
     <Content Include="Views\Customer\MessageAdmin.cshtml" />
+    <Content Include="Views\Admin\AdminCreation.cshtml" />
+    <Content Include="Views\Admin\MessagingCenter.cshtml" />
+    <Content Include="Views\Admin\DuePayments.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

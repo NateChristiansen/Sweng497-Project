@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "AdminCreation";
+}
+
+<script src="~/Scripts/application/Admin.js"></script>
+
+<h2>Admin Account Creation</h2>
+
+<form ng-app="Admin" ng-controller="CreateAdmin">
+    <div class="admin-creation">
+        <label for="firstname">First Name</label>
+        @Html.TextBox("firstname", null, new {@class = "form-control", @placeholder = "Enter First Name", @required = "true", @ng_model = "admin.firstname"})
+        <label for="lastname">Last Name</label>
+        @Html.TextBox("lastname", null, new {@class = "form-control", @placeholder = "Enter Last Name", @required = "true", @ng_model = "admin.lastname"})
+        <label for="email">Email</label>
+        @Html.TextBox("email", null, new {@class = "form-control", @placeholder = "Enter Email", @required = "true", @type = "email", @ng_model = "admin.email"})
+        <label for="password">Password</label>
+        @Html.TextBox("password", null, new {@class = "form-control", @placeholder = "Enter Password", @required = "true", @type = "password", @ng_model = "admin.password"})
+        <input type="submit" ng-click="create(admin)" value="Submit" class="btn btn-primary"/>
+    </div>
+</form>
+<div class="home-button">
+    <a href="@Url.Action("Index")">
+        <button>Home</button>
+    </a>
+</div>

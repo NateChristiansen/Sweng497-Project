@@ -31,7 +31,7 @@ namespace ErieGarbageOnline.Controllers
         {
             // create new model to prevent attackers from preseting information
             model = new LoginModel {Email = model.Email, Password = model.Password};
-            var x = _database.Admins.ToList();
+
             if (AuthenticateUser(model))
             {
                 return RedirectToAction("Index", model.Type.ToString());

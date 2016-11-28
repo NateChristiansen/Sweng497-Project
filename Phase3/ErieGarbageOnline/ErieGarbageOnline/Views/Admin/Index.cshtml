@@ -4,8 +4,12 @@
 }
 
 <h2>Admin</h2>
-@using (Html.BeginForm("CreateNewAdmin", "Admin", FormMethod.Post))
-{
-    <div class="new-admin">
-        <input type="submit" value="Create admin" class="btn btn-primary" />
-    </div>
+<a href="@Url.Action("AdminCreation")">
+    <button>Admin Account Creation</button>
+</a>
+<a href="@Url.Action("MessagingCenter")">
+    <button>Admin Messaging Center</button>
+</a>
+<a href="@Url.Action("DuePayments")">
+    <button>Check Due Payments</button>
+</a>
