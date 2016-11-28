@@ -61,6 +61,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.JScript" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -125,6 +126,7 @@
     <Content Include="Content\bootstrap\bootstrap.css.map" />
     <Content Include="Content\bootstrap\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap\bootstrap-theme.css.map" />
+    <Content Include="Scripts\application\Customer.js" />
     <Content Include="Scripts\libraries\angular\angular-mocks.js" />
     <Content Include="Scripts\libraries\angular\angular.js" />
     <Content Include="Scripts\libraries\angular\angular.min.js" />
@@ -149,7 +151,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+
     <Compile Include="Models\AdminModel.cs" />
+
+    <Compile Include="Migrations\201611201743223_InitialCreate.cs" />
+    <Compile Include="Migrations\201611201743223_InitialCreate.Designer.cs">
+      <DependentUpon>201611201743223_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611282059412_Update1.cs" />
+    <Compile Include="Migrations\201611282059412_Update1.Designer.cs">
+      <DependentUpon>201611282059412_Update1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CustomerModel.cs" />
+
     <Compile Include="Models\DatabaseModels\Admin.cs" />
     <Compile Include="Models\DatabaseModels\Bill.cs" />
     <Compile Include="Models\DatabaseModels\Customer.cs" />
@@ -172,6 +187,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\libraries\jquery\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\libraries\jquery\jquery-3.1.1.min.map" />
+    <Content Include="Views\Customer\MessageAdmin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -181,7 +197,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\application\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611201743223_InitialCreate.resx">
+      <DependentUpon>201611201743223_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611282059412_Update1.resx">
+      <DependentUpon>201611282059412_Update1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

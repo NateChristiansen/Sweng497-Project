@@ -15,7 +15,7 @@ namespace ErieGarbageOnline.Models.DatabaseModels
             return Data;
         }
 
-        private EGODatabase()
+        public EGODatabase()
         {
             
         }
