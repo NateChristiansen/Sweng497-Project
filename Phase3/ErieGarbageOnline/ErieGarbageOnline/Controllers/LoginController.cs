@@ -11,11 +11,10 @@ namespace ErieGarbageOnline.Controllers
     {
         private readonly EGODatabase _database = EGODatabase.Create();
         // GET: Login
+        [HttpGet]
         public ActionResult Index()
         {
-            var w = AppDomain.CurrentDomain.GetData("DataDirectory");
-            var x = _database.Admins.ToList();
-            var y = _database.Database.Connection.ConnectionString;
+            var x = new Message();
             // if user is logged in, retrieve their info and return them to the correct page
             var model = Session["User"] as LoginModel;
             if (model != null)
@@ -28,6 +27,7 @@ namespace ErieGarbageOnline.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult Authenticate(LoginModel model)
         {
             // create new model to prevent attackers from preseting information
@@ -36,17 +36,13 @@ namespace ErieGarbageOnline.Controllers
             {
                 return RedirectToAction("Index", model.Type.ToString());
             }
-
+            ModelState.AddModelError("LoginError", "Error Message");
+            
             return null;
         }
 
         private bool AuthenticateUser(LoginModel model)
         {
-            model.Authorized = true;
-            model.Type = AccountType.Admin;
-            FormsAuthentication.SetAuthCookie(model.Email, false);
-            Session["User"] = model;
-            return true;
             if (_database.Admins.Any(admin => admin.Email.Equals(model.Email) && admin.Password.Equals(model.Password)))
             {
                 model.Authorized = true;
