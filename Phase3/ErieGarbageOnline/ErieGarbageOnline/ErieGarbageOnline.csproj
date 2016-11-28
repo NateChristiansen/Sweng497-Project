@@ -151,9 +151,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-
+    <Compile Include="Migrations\201611282332310_Update2.cs" />
+    <Compile Include="Migrations\201611282332310_Update2.Designer.cs">
+      <DependentUpon>201611282332310_Update2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611282342440_Update21.cs" />
+    <Compile Include="Migrations\201611282342440_Update21.Designer.cs">
+      <DependentUpon>201611282342440_Update21.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AdminModel.cs" />
-
     <Compile Include="Migrations\201611201743223_InitialCreate.cs" />
     <Compile Include="Migrations\201611201743223_InitialCreate.Designer.cs">
       <DependentUpon>201611201743223_InitialCreate.cs</DependentUpon>
@@ -164,7 +170,6 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomerModel.cs" />
-
     <Compile Include="Models\DatabaseModels\Admin.cs" />
     <Compile Include="Models\DatabaseModels\Bill.cs" />
     <Compile Include="Models\DatabaseModels\Customer.cs" />
@@ -188,6 +193,8 @@
     <Content Include="Scripts\libraries\jquery\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\libraries\jquery\jquery-3.1.1.min.map" />
     <Content Include="Views\Customer\MessageAdmin.cshtml" />
+    <Content Include="Views\Customer\PlainMessage.cshtml" />
+    <Content Include="Views\Customer\Complaint.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -204,6 +211,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611282059412_Update1.resx">
       <DependentUpon>201611282059412_Update1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611282332310_Update2.resx">
+      <DependentUpon>201611282332310_Update2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611282342440_Update21.resx">
+      <DependentUpon>201611282342440_Update21.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

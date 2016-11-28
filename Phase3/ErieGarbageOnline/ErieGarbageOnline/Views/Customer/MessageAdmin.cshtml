@@ -2,10 +2,13 @@
 @{
     ViewBag.Title = "EGO - Customer";
 }
-<script>
-    $(document.)
-</script>
-<h2>Contact Us</h2>
-
-<form>
-</form>
+<script src="~/Scripts/application/Customer.js"></script>
+<div ng-app="Customer" ng-init="init(@Json.Encode(Model))" ng-controller="MessageAdmin">
+    <div> Hello {{ model.Firstname }}, go ahead and send us your message!</div>
+    <form>
+        <div ng-repeat="messagetype in model.MessageTypes">
+            <input type="radio" name="MessageType" value="{{messagetype}}" ng-model="model.MessageType"/> {{messagetype}}
+        </div>
+        <button type="submit" name="Submit" ng-click="send()">Send Message</button>
+    </form>
+</div>
