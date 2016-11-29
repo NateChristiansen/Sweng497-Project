@@ -58,6 +58,26 @@ namespace ErieGarbageOnline.Controllers
             return Json("Message failed");
         }
 
+        public PartialViewResult PlainMessage()
+        {
+            return PartialView();
+        }
+
+        public PartialViewResult Complaint()
+        {
+            return PartialView();
+        }
+
+        public PartialViewResult Suspension()
+        {
+            return PartialView();
+        }
+
+        public PartialViewResult Dispute()
+        {
+            return PartialView();
+        }
+
         public ActionResult CancelAccount()
         {
             return View();

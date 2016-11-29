@@ -6,6 +6,12 @@ customer.controller('MessageAdmin', ['$scope', function ($scope) {
         });
     }
 
+    $scope.updatetype = function (type) {
+        $.get('/Customer/' + type, function(data) {
+            $('#MessageBody').html(data);
+        });
+    }
+
     $scope.init = function(model) {
         $scope.model = model;
     }
