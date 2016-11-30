@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+using ErieGarbageOnline.Database;
 using ErieGarbageOnline.Models;
 
 namespace ErieGarbageOnline.Controllers
 {
     public abstract class SharedController
     {
-        protected User _user;
+        protected internal User User;
+        internal readonly EGODatabase Database = EGODatabase.Create();
 
         public void Logout()
         {
-            _user = null;
+            User = null;
             Application.Current.Shutdown();
         }
     }

@@ -41,16 +41,6 @@ namespace ErieGarbageOnline.Database
                     [Databases.Suspensions] = new List<DbItem>(),
                     [Databases.Disputes] = new List<DbItem>()
                 };
-                data[Databases.Customers].Add(new Customer
-                {
-                    Email = "cust@test.com",
-                    Password = "test"
-                });
-                data[Databases.Admins].Add(new Admin
-                {
-                    Email = "test@test.com",
-                    Password = "test"
-                });
             }
         }
 

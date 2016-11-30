@@ -9,22 +9,22 @@ namespace ErieGarbageOnline.Views
     /// </summary>
     public partial class AdminWindow : Window
     {
-        private AdminController _adminController;
+        private readonly AdminController _adminController;
         public AdminWindow(AdminController adminController)
         {
-            this._adminController = adminController;
+            _adminController = adminController;
             InitializeComponent();
         }
 
         private void SubmitAdminButton_Click(object sender, RoutedEventArgs e)
         {
             // Create admin from given information
-            var admin = new Admin()
+            var admin = new Admin
             {
-                Email = this.EmailBox.Text,
-                Password = this.PasswordBox.Password,
-                Firstname = this.FirstNameBox.Text,
-                Lastname = this.LastNameBox.Text
+                Email = EmailBox.Text,
+                Password = PasswordBox.Password,
+                Firstname = FirstNameBox.Text,
+                Lastname = LastNameBox.Text
             };
             // attempt to add the admin to the DB
             _adminController.CreateAdmin(admin);

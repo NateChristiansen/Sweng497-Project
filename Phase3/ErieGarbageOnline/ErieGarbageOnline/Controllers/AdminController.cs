@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Windows;
-using ErieGarbageOnline.Database;
 using ErieGarbageOnline.Models;
 using ErieGarbageOnline.Views;
 
@@ -11,15 +9,14 @@ namespace ErieGarbageOnline.Controllers
 {
     public class AdminController : SharedController
     {
-        private EGODatabase _database = EGODatabase.Create();
-        private AdminWindow view;
+        private readonly AdminWindow view;
 
         public AdminController(Admin admin)
         {
-            this._user = admin;
+            User = admin;
             view = new AdminWindow(this) {WelcomeLabel = {Content = "Welcome, " + admin.Email}};
             FillEmailReceiverBox();
-            view.dataGrid.ItemsSource = _database.AllMessages();
+            view.dataGrid.ItemsSource = Database.AllMessages();
             view.Show();
 
         }
@@ -70,13 +67,13 @@ namespace ErieGarbageOnline.Controllers
 
         public void SendEmail(string receiver, string subject, string body)
         {
-            string sender = _user.Email;
+            string sender = User.Email;
 
             var mail = new MailMessage(sender, receiver);
             var client = new SmtpClient("smtp.gmail.com", 587)
             {
                 Credentials = new NetworkCredential("needsmtpnow@gmail.com", "ineedsmtp"),
-                EnableSsl = true,
+                EnableSsl = true
             };
 
             mail.Subject = subject;
@@ -103,7 +100,7 @@ namespace ErieGarbageOnline.Controllers
 
         private void FillEmailReceiverBox()
         {
-            var custList = _database.Customers();
+            var custList = Database.Customers();
             foreach (var customer in custList)
             {
                 view.ReceiverBox.Items.Add(customer.Email);
