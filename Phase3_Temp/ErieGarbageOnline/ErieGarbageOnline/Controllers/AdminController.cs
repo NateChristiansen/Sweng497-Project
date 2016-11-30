@@ -14,10 +14,12 @@ namespace ErieGarbageOnline.Controllers
     class AdminController
     {
         private EGODatabase _database = EGODatabase.Create();
+        private AdminWindow _adminView;
 
         public AdminController(AdminWindow adminView)
         {
-            
+            this._adminView = adminView;
+            _adminView.Show();
         }
         public void CreateAdmin(Admin newAdmin)
         {
@@ -71,6 +73,13 @@ namespace ErieGarbageOnline.Controllers
             {
                 // message that mail could not be sent
             }
+        }
+
+        public void DisplayDuePayments()
+        {
+            // get list of customers with due bills
+            //var customersWithDuePayments = _database.Customers().ForEach()
+            
         }
 
 

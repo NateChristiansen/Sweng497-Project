@@ -8,7 +8,9 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
             <TabItem Header="View Messages">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <ListBox Name ="DuePaymentBox" HorizontalAlignment="Left" Height="262" Margin="10,34,0,0" VerticalAlignment="Top" Width="216"/>
+                </Grid>
             </TabItem>
             <TabItem Header="Email Customer">
                 <Grid Background="#FFE5E5E5"/>
