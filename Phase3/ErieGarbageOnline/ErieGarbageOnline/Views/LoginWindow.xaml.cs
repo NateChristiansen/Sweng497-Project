@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using ErieGarbageOnline.Controllers;
 
-namespace ErieGarbageOnline
+namespace ErieGarbageOnline.Views
 {
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
