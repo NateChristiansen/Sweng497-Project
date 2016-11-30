@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace ErieGarbageOnline.Models
+﻿namespace ErieGarbageOnline.Models
 {
     class Admin : DbItem
     {
-        public int AdminId { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string Firstname { get; set; }
@@ -16,7 +13,5 @@ namespace ErieGarbageOnline.Models
             if (Email == null) return false;
             return true;
         }
-        public List<Customer> CustomerList;
-        public List<Admin> AdminList;
     }
 }

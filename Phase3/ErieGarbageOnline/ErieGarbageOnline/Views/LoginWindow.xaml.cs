@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using ErieGarbageOnline.Database;
+using ErieGarbageOnline.Controllers;
 
 namespace ErieGarbageOnline
 {
@@ -8,15 +8,16 @@ namespace ErieGarbageOnline
     /// </summary>
     public partial class LoginWindow : Window
     {
-        public LoginWindow()
+        private readonly LoginController controller;
+        public LoginWindow(LoginController controller)
         {
+            this.controller = controller;
             InitializeComponent();
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            var x = EGODatabase.Create();
-            x.Customers();
+            controller.Login();
         }
     }
 }
