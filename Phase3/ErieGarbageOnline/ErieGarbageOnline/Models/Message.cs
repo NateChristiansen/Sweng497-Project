@@ -4,6 +4,7 @@ using ErieGarbageOnline.Database;
 
 namespace ErieGarbageOnline.Models
 {
+    [Serializable]
     abstract class Message : DbItem
     {
         public int CustomerId { get; set; }

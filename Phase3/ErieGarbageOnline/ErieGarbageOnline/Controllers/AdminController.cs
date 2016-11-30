@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Windows;
@@ -19,6 +20,7 @@ namespace ErieGarbageOnline.Controllers
             this.admin = admin;
             view = new AdminWindow(this) {WelcomeLabel = {Content = "Welcome, " + admin.Email}};
             FillEmailReceiverBox();
+            view.dataGrid.ItemsSource = _database.AllMessages();
             view.Show();
 
         }
@@ -29,8 +31,6 @@ namespace ErieGarbageOnline.Controllers
                 // Add the admin to the database
                 // save changes
                 // Display confirmation
-                _database.Admins().Add(newAdmin);
-                _database.SaveChanges();
                 MessageBox.Show("Admin " + newAdmin.Email + " has been added to the database.");
                 Console.WriteLine(_database.Admins().Count);
             }

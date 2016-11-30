@@ -10,7 +10,10 @@ namespace ErieGarbageOnline.Database
     class EGODatabase
     {
         private static EGODatabase database;
-        private readonly string location = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "/Database/Database.ego";
+
+        private readonly string location = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName +
+                                           "/Database/Database.ego";
+
         private readonly Dictionary<Databases, List<DbItem>> data;
 
         private EGODatabase()
@@ -38,6 +41,16 @@ namespace ErieGarbageOnline.Database
                     [Databases.Suspensions] = new List<DbItem>(),
                     [Databases.Disputes] = new List<DbItem>()
                 };
+                data[Databases.Customers].Add(new Customer
+                {
+                    Email = "cust@test.com",
+                    Password = "test"
+                });
+                data[Databases.Admins].Add(new Admin
+                {
+                    Email = "test@test.com",
+                    Password = "test"
+                });
             }
         }
 
@@ -51,13 +64,31 @@ namespace ErieGarbageOnline.Database
             return data[Databases.Customers].Cast<Customer>().ToList();
         }
 
-        public void SaveChanges()
+        private void SaveChanges()
         {
-            using (var sw = File.Open(location, FileMode.OpenOrCreate))
+            try
             {
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(sw, data);
+                using (var sw = File.Open(location, FileMode.OpenOrCreate))
+                {
+                    var formatter = new BinaryFormatter();
+                    formatter.Serialize(sw, data);
+                }
             }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void SetId(List<DbItem> set, DbItem item)
+        {
+            if (!set.Any())
+            {
+                item.Id = 0;
+                return;
+            }
+            var max = set.Select(dbItem => dbItem.Id).Concat(new[] {int.MinValue}).Max();
+            item.Id = max + 1;
         }
 
         enum Databases
@@ -80,18 +111,63 @@ namespace ErieGarbageOnline.Database
             return data[Databases.Bills].Cast<Bill>().ToList();
         }
 
+        public List<Message> AllMessages()
+        {
+            var messages = data[Databases.Complaints];
+            messages.AddRange(data[Databases.Disputes]);
+            messages.AddRange(data[Databases.Suspensions]);
+            return messages.Cast<Message>().ToList();
+        }
+
         public bool AddComplaint(Complaint complaint)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var set = data[Databases.Complaints];
+                SetId(set, complaint);
+                if (!complaint.CheckValidity()) return false;
+                set.Add(complaint);
+                SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public bool AddDispute(Dispute dispute)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var set = data[Databases.Disputes];
+                SetId(set, dispute);
+                if (!dispute.CheckValidity()) return false;
+                set.Add(dispute);
+                SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
+
         public bool AddSuspension(Suspension suspension)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var set = data[Databases.Suspensions];
+                SetId(set, suspension);
+                if (!suspension.CheckValidity()) return false;
+                set.Add(suspension);
+                SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }
