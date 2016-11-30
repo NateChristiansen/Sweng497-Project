@@ -14,11 +14,15 @@ namespace ErieGarbageOnline.Controllers
     public class CustomerController : SharedController
     {
         private readonly CustomerWindow view;
+        private readonly Customer user;
         private readonly EGODatabase database = EGODatabase.Create();
         public CustomerController(Customer customer)
         {
+<<<<<<< HEAD
+            this._user = customer;
+=======
             view = new CustomerWindow(this);
-            _user = customer;
+            user = customer;
             view.Show();
         }
 
@@ -30,7 +34,7 @@ namespace ErieGarbageOnline.Controllers
                 success = database.AddComplaint(new Complaint
                 {
                     MessageBody = view.Complaint.Message.Text,
-                    CustomerId = _user.Id
+                    CustomerId = user.Id
                 });
             }
             else if (view.DisputeButton.IsChecked == true)
@@ -39,7 +43,7 @@ namespace ErieGarbageOnline.Controllers
                 {
                     MessageBody = view.Dispute.Message.Text,
                     BillId = int.Parse(view.Dispute.BillIdBox.Text),
-                    CustomerId = _user.Id
+                    CustomerId = user.Id
                 });
             }
             else if (view.SuspensionButton.IsChecked == true)
@@ -47,7 +51,7 @@ namespace ErieGarbageOnline.Controllers
                 success = database.AddSuspension(new Suspension
                 {
                     MessageBody = view.Suspension.Message.Text,
-                    CustomerId = _user.Id,
+                    CustomerId = user.Id,
                     SuspensionEnds = view.Suspension.SuspensionDate.DisplayDate
                 });
             }
@@ -66,6 +70,7 @@ namespace ErieGarbageOnline.Controllers
                 view.Dispute.Visibility = Visibility.Visible;
             else if (view.SuspensionButton.IsChecked == true)
                 view.Suspension.Visibility = Visibility.Visible;
+>>>>>>> 61deca5106443c65967b374a8ecca15e675bb6fc
         }
     }
 }
