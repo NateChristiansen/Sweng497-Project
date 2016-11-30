@@ -5,16 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ErieGarbageOnline"
         mc:Ignorable="d"
-        Title="ErieGarbageOnline" Height="153.174" Width="206.321">
+        Title="ErieGarbageOnline" Height="200" Width="300">
     <Grid>
-        <Label x:Name="label" Content="Email" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="Password" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="EmailField" HorizontalAlignment="Left" Height="26" Margin="70,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" VerticalContentAlignment="Center"/>
-        <PasswordBox x:Name="PasswordField" HorizontalAlignment="Left" Margin="70,41,0,0" VerticalAlignment="Top" Height="26" Width="120"/>
-        <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="76" Click="LoginButton_Click"/>
-        <Button x:Name="RegisterButton" Content="Register" HorizontalAlignment="Left" Margin="115,72,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label x:Name="label2" Content="" HorizontalAlignment="Left" Margin="10,97,0,0" Height="26" VerticalAlignment="Top" Foreground="Red"/>
-        <Label x:Name="label3" Content="Label" HorizontalAlignment="Left" Margin="20,-59,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="Email" HorizontalAlignment="Left" Margin="60,29,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="Password" HorizontalAlignment="Left" Margin="60,60,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="EmailField" HorizontalAlignment="Left" Height="26" Margin="120,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" VerticalContentAlignment="Center"/>
+        <PasswordBox x:Name="PasswordField" HorizontalAlignment="Left" Margin="120,60,0,0" VerticalAlignment="Top" Height="26" Width="120"/>
+        <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Left" Margin="60,91,0,0" VerticalAlignment="Top" Width="76" Click="LoginButton_Click"/>
+        <Button x:Name="RegisterButton" Content="Register" HorizontalAlignment="Left" Margin="165,91,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label x:Name="ErrorLabel" Content="" HorizontalAlignment="Left" Margin="60,116,0,0" Height="26" VerticalAlignment="Top" Foreground="Red"/>
 
     </Grid>
 </Window>

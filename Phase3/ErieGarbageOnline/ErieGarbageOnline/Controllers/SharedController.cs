@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ErieGarbageOnline.Controllers
 {
-    abstract class SharedController
+    public abstract class SharedController
     {
         public void Logout()
         {

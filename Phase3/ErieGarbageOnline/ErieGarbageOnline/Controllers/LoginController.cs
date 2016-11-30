@@ -32,7 +32,7 @@ namespace ErieGarbageOnline.Controllers
                 view.Close();
                 return;
             }
-            view.label3.Content = "Username or password incorrect.";
+            view.ErrorLabel.Content = "Username or password incorrect.";
         }
     }
 }

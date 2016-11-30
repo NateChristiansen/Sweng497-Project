@@ -79,5 +79,19 @@ namespace ErieGarbageOnline.Database
         {
             return data[Databases.Bills].Cast<Bill>().ToList();
         }
+
+        public bool AddComplaint(Complaint complaint)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool AddDispute(Dispute dispute)
+        {
+            throw new NotImplementedException();
+        }
+        public bool AddSuspension(Suspension suspension)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
