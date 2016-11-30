@@ -15,6 +15,7 @@ namespace ErieGarbageOnline.Controllers
         {
             this.admin = admin;
             view = new AdminWindow();
+            view.WelcomeLabel.Content = "Welcome, " + admin.Email;
             view.Show();
 
         }
