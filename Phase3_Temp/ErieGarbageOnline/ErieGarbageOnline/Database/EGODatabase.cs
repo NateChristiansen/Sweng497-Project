@@ -1,22 +1,43 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using ErieGarbageOnline.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace ErieGarbageOnline.Database
 {
     class EGODatabase
     {
         private static EGODatabase database;
-        private readonly string location = "Database.json";
-        private dynamic data;
+        private readonly string location = "Database.ego";
+        private readonly Dictionary<Databases, List<DbItem>> data;
 
         private EGODatabase()
         {
-            using (var sr = new StreamReader(location))
+            try
             {
-                data = JsonConvert.DeserializeObject<dynamic>(sr.ReadToEnd());
+                using (var sr = File.Open(location, FileMode.OpenOrCreate))
+                {
+                    var formatter = new BinaryFormatter();
+                    data = formatter.Deserialize(sr) as Dictionary<Databases, List<DbItem>>;
+                }
+            }
+            catch (Exception)
+            {
+                data = null;
+            }
+            if (data == null)
+            {
+                data = new Dictionary<Databases, List<DbItem>>
+                {
+                    [Databases.Customers] = new List<DbItem>(),
+                    [Databases.Admins] = new List<DbItem>(),
+                    [Databases.Bills] = new List<DbItem>(),
+                    [Databases.Complaints] = new List<DbItem>(),
+                    [Databases.Suspensions] = new List<DbItem>(),
+                    [Databases.Disputes] = new List<DbItem>()
+                };
             }
         }
 
@@ -27,16 +48,31 @@ namespace ErieGarbageOnline.Database
 
         public List<Customer> Customers()
         {
-            return ((JArray) data.Customers).ToObject<List<Customer>>();
+            return data[Databases.Customers].Cast<Customer>().ToList();
         }
 
         public void SaveChanges()
         {
-            using (var sw = new StreamWriter(location))
+            using (var sw = File.Open(location, FileMode.OpenOrCreate))
             {
-                var json = JsonConvert.SerializeObject(data);
-
+                var formatter = new BinaryFormatter();
+                formatter.Serialize(sw, data);
             }
+        }
+
+        enum Databases
+        {
+            Customers,
+            Admins,
+            Complaints,
+            Suspensions,
+            Disputes,
+            Bills
+        }
+
+        public List<Bill> Bills()
+        {
+            return data[Databases.Bills].Cast<Bill>().ToList();
         }
     }
 }

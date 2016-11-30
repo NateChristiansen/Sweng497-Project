@@ -74,10 +74,13 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Database\EGODatabase.cs" />
+<<<<<<< HEAD
     <Compile Include="Views\AdminWindow.xaml.cs">
-    <Compile Include="Models\DbItem.cs" />
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
+=======
+    <Compile Include="Models\DbItem.cs" />
+>>>>>>> e1a2f48d0edca86e941290420cbb7de53a2d4d55
     <Compile Include="Views\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
