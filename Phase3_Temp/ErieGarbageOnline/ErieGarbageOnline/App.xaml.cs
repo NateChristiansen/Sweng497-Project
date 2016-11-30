@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using ErieGarbageOnline.Controllers;
 
 namespace ErieGarbageOnline
 {
@@ -7,5 +8,10 @@ namespace ErieGarbageOnline
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            ShutdownMode = ShutdownMode.OnLastWindowClose;
+            new LoginController();
+        }
     }
 }

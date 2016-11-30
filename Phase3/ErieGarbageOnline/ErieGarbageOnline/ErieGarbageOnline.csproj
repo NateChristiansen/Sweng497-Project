@@ -197,18 +197,15 @@
     <Content Include="Scripts\libraries\jquery\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\libraries\jquery\jquery-3.1.1.min.map" />
     <Content Include="Views\Customer\MessageAdmin.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Admin\AdminCreation.cshtml" />
     <Content Include="Views\Admin\MessagingCenter.cshtml" />
     <Content Include="Views\Customer\PlainMessage.cshtml" />
     <Content Include="Views\Customer\Complaint.cshtml" />
     <Content Include="Views\Admin\DuePayments.cshtml" />
-=======
     <Content Include="Views\Customer\Complaint.cshtml" />
     <Content Include="Views\Customer\Suspension.cshtml" />
     <Content Include="Views\Customer\Dispute.cshtml" />
     <Content Include="Views\Customer\CancelAccount.cshtml" />
->>>>>>> 64dae96034b0e486bffa0a3727a32467c09858c2
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

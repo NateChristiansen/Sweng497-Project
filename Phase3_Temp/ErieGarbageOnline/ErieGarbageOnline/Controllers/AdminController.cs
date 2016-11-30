@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net.Mail;
 using ErieGarbageOnline.Database;
 using ErieGarbageOnline.Models;
-using ErieGarbageOnline.Views;
 
 namespace ErieGarbageOnline.Controllers
 {
     class AdminController
     {
         private EGODatabase _database = EGODatabase.Create();
+        private Admin admin;
 
-        public AdminController(AdminWindow adminView)
+        public AdminController(Admin admin)
         {
-            
+            this.admin = admin;
+
         }
         public void CreateAdmin(Admin newAdmin)
         {
@@ -26,10 +21,6 @@ namespace ErieGarbageOnline.Controllers
                 // Add the admin to the database
                 // save changes
                 // Display confirmation
-            }
-            else
-            {
-                // Display error
             }
         }
 

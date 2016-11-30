@@ -70,6 +70,11 @@ namespace ErieGarbageOnline.Database
             Bills
         }
 
+        public List<Admin> Admins()
+        {
+            return data[Databases.Admins].Cast<Admin>().ToList();
+        }
+
         public List<Bill> Bills()
         {
             return data[Databases.Bills].Cast<Bill>().ToList();
