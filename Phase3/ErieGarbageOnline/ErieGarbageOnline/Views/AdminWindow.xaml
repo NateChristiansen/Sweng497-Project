@@ -38,7 +38,7 @@
             </TabItem>
         </TabControl>
         <Label Name="WelcomeLabel" Content="Welcome [name]" HorizontalAlignment="Left" Margin="445,-20,0,0" VerticalAlignment="Top"/>
-        <Button Name ="LogoutButton" Content="Logout" HorizontalAlignment="Left" Margin="458,6,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name ="LogoutButton" Content="Logout" HorizontalAlignment="Left" Margin="458,6,0,0" VerticalAlignment="Top" Width="75" Click="LogoutButton_Click"/>
 
     </Grid>
 </Window>

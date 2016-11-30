@@ -11,7 +11,7 @@ namespace ErieGarbageOnline.Controllers
     {
         public CustomerController(Customer customer)
         {
-            
+            this._user = customer;
         }
     }
 }

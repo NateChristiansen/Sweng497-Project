@@ -11,12 +11,11 @@ namespace ErieGarbageOnline.Controllers
     public class AdminController : SharedController
     {
         private EGODatabase _database = EGODatabase.Create();
-        private Admin admin;
         private AdminWindow view;
 
         public AdminController(Admin admin)
         {
-            this.admin = admin;
+            this._user = admin;
             view = new AdminWindow(this) {WelcomeLabel = {Content = "Welcome, " + admin.Email}};
             FillEmailReceiverBox();
             view.Show();
@@ -59,7 +58,7 @@ namespace ErieGarbageOnline.Controllers
 
         public void SendEmail(string receiver, string subject, string body)
         {
-            string sender = admin.Email;
+            string sender = _user.Email;
 
             var mail = new MailMessage(sender, receiver);
             var client = new SmtpClient("smtp.gmail.com", 587)
@@ -74,6 +73,7 @@ namespace ErieGarbageOnline.Controllers
             try
             {
                 client.Send(mail);
+                ClearEmailFields();
                 MessageBox.Show("Message sent successfully");
             }
             catch (Exception e)
@@ -81,6 +81,12 @@ namespace ErieGarbageOnline.Controllers
                 // message that mail could not be sent
                 MessageBox.Show("Could not send email");
             }
+        }
+
+        private void ClearEmailFields()
+        {
+            view.SubjectBox.Clear();
+            view.BodyBox.Clear();;
         }
 
         private void FillEmailReceiverBox()
@@ -91,6 +97,7 @@ namespace ErieGarbageOnline.Controllers
                 view.ReceiverBox.Items.Add(customer.Email);
             }
         }
+
 
 
     }

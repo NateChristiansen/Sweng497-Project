@@ -3,12 +3,9 @@
 namespace ErieGarbageOnline.Models
 {
     [Serializable]
-    public class Admin : DbItem
+    public class Admin : User
     {
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
+
         public override bool CheckValidity()
         {
             if (Firstname == null) return false;
