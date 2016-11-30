@@ -1,5 +1,8 @@
-﻿namespace ErieGarbageOnline.Models
+﻿using System;
+
+namespace ErieGarbageOnline.Models
 {
+    [Serializable]
     class Admin : DbItem
     {
         public string Email { get; set; }

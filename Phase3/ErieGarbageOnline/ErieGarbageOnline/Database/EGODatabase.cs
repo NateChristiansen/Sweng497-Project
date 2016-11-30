@@ -10,7 +10,7 @@ namespace ErieGarbageOnline.Database
     class EGODatabase
     {
         private static EGODatabase database;
-        private readonly string location = "Database.ego";
+        private readonly string location = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "/Database/Database.ego";
         private readonly Dictionary<Databases, List<DbItem>> data;
 
         private EGODatabase()

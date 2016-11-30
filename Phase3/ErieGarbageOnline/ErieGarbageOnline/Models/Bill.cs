@@ -4,9 +4,9 @@ using ErieGarbageOnline.Database;
 
 namespace ErieGarbageOnline.Models
 {
+    [Serializable]
     class Bill : DbItem
     {
-        public int BillId { get; set; }
         public int CustomerId { get; set; }
         public DateTime Date { get; set; } = DateTime.Now;
         public decimal Amount { get; set; }
@@ -14,7 +14,7 @@ namespace ErieGarbageOnline.Models
         public override bool CheckValidity()
         {
             var db = EGODatabase.Create();
-            if (!db.Customers().Any(c => c.CustomerId == CustomerId)) return false;
+            if (!db.Customers().Any(c => c.Id == CustomerId)) return false;
             return Amount > 0;
         }
     }

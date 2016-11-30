@@ -13,7 +13,7 @@ namespace ErieGarbageOnline.Models
         public bool Responded { get; set; }
         public override bool CheckValidity()
         {
-            if (!EGODatabase.Create().Customers().Any(c => c.CustomerId == CustomerId)) return false;
+            if (!EGODatabase.Create().Customers().Any(c => c.Id == CustomerId)) return false;
             if (string.IsNullOrWhiteSpace(MessageBody)) return false;
             return true;
         }

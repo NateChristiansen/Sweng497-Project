@@ -2,9 +2,9 @@
 
 namespace ErieGarbageOnline.Models
 {
+    [Serializable]
     class Customer : DbItem
     {
-        public int CustomerId { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string Firstname { get; set; }
