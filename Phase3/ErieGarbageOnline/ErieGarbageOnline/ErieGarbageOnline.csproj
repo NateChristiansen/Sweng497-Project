@@ -94,6 +94,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Database\EGODatabase.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Views\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>

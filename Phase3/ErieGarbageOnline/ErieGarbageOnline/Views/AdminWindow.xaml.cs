@@ -32,12 +32,17 @@ namespace ErieGarbageOnline.Views
 
         private void SendEmailButton_Click(object sender, RoutedEventArgs e)
         {
-            string receiver = ReceiverBox.SelectedIndex.ToString();
+            string receiver = ReceiverBox.SelectedItem.ToString();
             string subject = SubjectBox.Text;
             string body = BodyBox.Text;
 
             // send the email
             _adminController.SendEmail(receiver, subject, body);
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            _adminController.Logout();
         }
     }
 }
