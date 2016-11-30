@@ -11,5 +11,8 @@ namespace ErieGarbageOnline.Models
         public List<string> MessageTypes = Enum.GetNames(typeof(MessageType)).ToList();
         public string Firstname { get; set; }
         public string Lastname { get; set; }
+        public MessageType MessageType { get; set; }
+        public int CustomerId { get; set; }
+        public string MessageBody { get; set; }
     }
 }

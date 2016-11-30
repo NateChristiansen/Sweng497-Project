@@ -34,6 +34,42 @@ namespace ErieGarbageOnline.Controllers
             return Json("admin could not be authenticated and not added to DB.");
         }
 
+        /// <summary>
+        /// Checks to see if a new admin is valid
+        /// </summary>
+        /// <param name="newAdmin"></param>
+        /// <returns></returns>
+        private bool AuthenticateNewAdmin(Admin newAdmin)
+        {
+            if (newAdmin.Firstname == null || newAdmin.Lastname == null || newAdmin.Email == null)
+                return false;
+
+            if (_database.Admins.Any(admin => admin.Email.Equals(newAdmin.Email)))
+                return false;
+
+            if (_database.Customers.Any(customer => customer.Email.Equals(newAdmin.Email)))
+                return false;
+
+            if (!newAdmin.Email.Contains("@"))
+                return false;
+
+            if (newAdmin.Password.Equals(""))
+                return false;
+
+            return true;
+
+        }
+
+        /// <summary>
+        /// Check 
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult CheckCustomerAccountsW()
+        {
+            var custList = _database.Customers.ToList();
+
+        }
+
         // moves to the admin creation page
         public ActionResult AdminCreation()
         {
@@ -52,29 +88,7 @@ namespace ErieGarbageOnline.Controllers
             return View();
         }
 
-        /// <summary>
-        /// Checks to see if a new admin is valid
-        /// </summary>
-        /// <param name="newAdmin"></param>
-        /// <returns></returns>
-        private bool AuthenticateNewAdmin(Admin newAdmin)
-        {
-            if (newAdmin.Firstname == null || newAdmin.Lastname == null || newAdmin.Email == null)
-                return false;
-
-            if (_database.Admins.Any(admin => admin.Email.Equals(newAdmin.Email)))
-                return false;
-
-            if (_database.Customers.Any(customer => customer.Email.Equals(newAdmin.Email)))
-                return false;
-
-            if (newAdmin.Password.Equals(""))
-                return false;
-
-            return true;
-
-        }
-
+        // return home
         public override ActionResult Index()
         {
             return View();
