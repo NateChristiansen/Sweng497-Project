@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Database\EGODatabase.cs" />
+    <Compile Include="Models\DbItem.cs" />
     <Compile Include="Views\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

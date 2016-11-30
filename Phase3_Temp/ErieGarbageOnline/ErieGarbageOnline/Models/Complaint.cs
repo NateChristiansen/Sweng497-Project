@@ -1,6 +1,6 @@
 ﻿namespace ErieGarbageOnline.Models
 {
-    class Complaint
+    class Complaint : Message
     {
     }
 }
