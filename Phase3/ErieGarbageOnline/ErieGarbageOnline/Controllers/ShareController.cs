@@ -1,6 +1,4 @@
 ﻿using System.Web.Mvc;
-using ErieGarbageOnline.Models;
-using ErieGarbageOnline.Models.DatabaseModels;
 
 namespace ErieGarbageOnline.Controllers
 {

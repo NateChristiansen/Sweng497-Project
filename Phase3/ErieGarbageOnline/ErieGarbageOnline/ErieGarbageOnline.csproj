@@ -172,10 +172,13 @@
     <Compile Include="Models\CustomerModel.cs" />
     <Compile Include="Models\DatabaseModels\Admin.cs" />
     <Compile Include="Models\DatabaseModels\Bill.cs" />
+    <Compile Include="Models\DatabaseModels\Complaint.cs" />
     <Compile Include="Models\DatabaseModels\Customer.cs" />
+    <Compile Include="Models\DatabaseModels\Dispute.cs" />
     <Compile Include="Models\DatabaseModels\EGODatabase.cs" />
     <Compile Include="Models\DatabaseModels\IDbItem.cs" />
     <Compile Include="Models\DatabaseModels\Message.cs" />
+    <Compile Include="Models\DatabaseModels\Suspension.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Filter.cs" />
@@ -193,10 +196,10 @@
     <Content Include="Scripts\libraries\jquery\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\libraries\jquery\jquery-3.1.1.min.map" />
     <Content Include="Views\Customer\MessageAdmin.cshtml" />
-    <Content Include="Views\Customer\PlainMessage.cshtml" />
     <Content Include="Views\Customer\Complaint.cshtml" />
     <Content Include="Views\Customer\Suspension.cshtml" />
     <Content Include="Views\Customer\Dispute.cshtml" />
+    <Content Include="Views\Customer\CancelAccount.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

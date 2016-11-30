@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ErieGarbageOnline.Models.DatabaseModels
+﻿namespace ErieGarbageOnline.Models.DatabaseModels
 {
     public class Admin : IDbItem
     {

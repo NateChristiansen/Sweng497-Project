@@ -1,8 +1,7 @@
+using System.Data.Entity.Migrations;
+
 namespace ErieGarbageOnline.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class InitialCreate : DbMigration
     {
         public override void Up()
@@ -11,11 +10,11 @@ namespace ErieGarbageOnline.Migrations
                 "dbo.Admins",
                 c => new
                     {
-                        AdminId = c.Int(nullable: false, identity: true),
+                        AdminId = c.Int(false, true),
                         Email = c.String(),
                         Password = c.String(),
                         Firstname = c.String(),
-                        Lastname = c.String(),
+                        Lastname = c.String()
                     })
                 .PrimaryKey(t => t.AdminId);
             
@@ -23,7 +22,7 @@ namespace ErieGarbageOnline.Migrations
                 "dbo.Bills",
                 c => new
                     {
-                        BillId = c.Int(nullable: false, identity: true),
+                        BillId = c.Int(false, true)
                     })
                 .PrimaryKey(t => t.BillId);
             
@@ -31,7 +30,7 @@ namespace ErieGarbageOnline.Migrations
                 "dbo.Customers",
                 c => new
                     {
-                        CustomerId = c.Int(nullable: false, identity: true),
+                        CustomerId = c.Int(false, true),
                         Email = c.String(),
                         Password = c.String(),
                         Firstname = c.String(),
@@ -40,7 +39,7 @@ namespace ErieGarbageOnline.Migrations
                         City = c.String(),
                         Country = c.String(),
                         State = c.String(),
-                        PostalCode = c.String(),
+                        PostalCode = c.String()
                     })
                 .PrimaryKey(t => t.CustomerId);
             
@@ -48,7 +47,7 @@ namespace ErieGarbageOnline.Migrations
                 "dbo.Messages",
                 c => new
                     {
-                        MessageId = c.Int(nullable: false, identity: true),
+                        MessageId = c.Int(false, true)
                     })
                 .PrimaryKey(t => t.MessageId);
             

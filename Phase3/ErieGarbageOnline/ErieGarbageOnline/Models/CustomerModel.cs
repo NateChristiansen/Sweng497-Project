@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using ErieGarbageOnline.Models.DatabaseModels;
 
 namespace ErieGarbageOnline.Models
@@ -14,5 +13,7 @@ namespace ErieGarbageOnline.Models
         public MessageType MessageType { get; set; }
         public int CustomerId { get; set; }
         public string MessageBody { get; set; }
+        public int BillId { get; set; }
+        public DateTime SuspensionEnds { get; set; }
     }
 }
