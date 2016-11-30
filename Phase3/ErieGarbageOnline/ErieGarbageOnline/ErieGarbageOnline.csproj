@@ -74,7 +74,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Database\EGODatabase.cs" />
     <Compile Include="Views\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>

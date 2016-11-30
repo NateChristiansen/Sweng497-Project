@@ -5,7 +5,7 @@ using ErieGarbageOnline.Views;
 
 namespace ErieGarbageOnline.Controllers
 {
-    class AdminController
+    class AdminController : SharedController
     {
         private EGODatabase _database = EGODatabase.Create();
         private Admin admin;

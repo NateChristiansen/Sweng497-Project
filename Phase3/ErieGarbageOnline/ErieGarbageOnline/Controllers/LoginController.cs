@@ -5,11 +5,11 @@ namespace ErieGarbageOnline.Controllers
 {
     public class LoginController
     {
-        private LoginWindow view;
+        private Views.LoginWindow view;
         private EGODatabase database = EGODatabase.Create();
         public LoginController()
         {
-            view = new LoginWindow(this);
+            view = new Views.LoginWindow(this);
             view.Show();
         }
 
@@ -22,7 +22,17 @@ namespace ErieGarbageOnline.Controllers
             {
                 new AdminController(admin);
                 view.Close();
+                return;
             }
+            var customer = database.Customers()
+                .FirstOrDefault(c => c.Email.Equals(email) && c.Password.Equals(password));
+            if (customer != null)
+            {
+                new CustomerController(customer);
+                view.Close();
+                return;
+            }
+            view.label3.Content = "Username or password incorrect.";
         }
     }
 }
