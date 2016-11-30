@@ -1,67 +1,28 @@
 ﻿using System.Linq;
-using System.Web.Mvc;
-using System.Web.Security;
-using ErieGarbageOnline.Models;
-using ErieGarbageOnline.Models.DatabaseModels;
+using ErieGarbageOnline.Database;
 
 namespace ErieGarbageOnline.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController
     {
-        private readonly EGODatabase _database = EGODatabase.Create();
-        // GET: Login
-        [HttpGet]
-        public ActionResult Index()
+        private LoginWindow view;
+        private EGODatabase database = EGODatabase.Create();
+        public LoginController()
         {
-            // if user is logged in, retrieve their info and return them to the correct page
-            var model = Session["User"] as LoginModel;
-            if (model != null)
-            {
-                // redirect to correct page
-                return RedirectToAction("Index", model.Type.ToString());
-            }
-
-            // if session has been cleared, they must log back in
-            return View();
+            view = new LoginWindow(this);
+            view.Show();
         }
 
-        [HttpPost]
-        public ActionResult Authenticate(LoginModel model)
+        public void Login()
         {
-            // create new model to prevent attackers from preseting information
-            model = new LoginModel {Email = model.Email, Password = model.Password};
-
-            if (AuthenticateUser(model))
+            var email = view.EmailField.Text;
+            var password = view.PasswordField.Password;
+            var admin = database.Admins().FirstOrDefault(a => a.Email.Equals(email) && a.Password.Equals(password));
+            if (admin != null)
             {
-                return RedirectToAction("Index", model.Type.ToString());
+                new AdminController(admin);
+                view.Close();
             }
-            ModelState.AddModelError("LoginError", "Error Message");
-  
-            return RedirectToAction("Index");
-        }
-
-        private bool AuthenticateUser(LoginModel model)
-        {
-            if (_database.Admins.Any(admin => admin.Email.Equals(model.Email) && admin.Password.Equals(model.Password)))
-            {
-                model.Authorized = true;
-                model.Type = AccountType.Admin;
-                FormsAuthentication.SetAuthCookie(model.Email, false);
-                Session["User"] = model;
-                return true;
-            }
-            if (
-                _database.Customers.Any(
-                    customer => customer.Email.Equals(model.Email) && customer.Password.Equals(model.Password)))
-            {
-                model.Authorized = true;
-                model.Type = AccountType.Customer;
-                FormsAuthentication.SetAuthCookie(model.Email, false);
-                Session["User"] = model;
-                return true;
-            }
-
-            return false;
         }
     }
 }

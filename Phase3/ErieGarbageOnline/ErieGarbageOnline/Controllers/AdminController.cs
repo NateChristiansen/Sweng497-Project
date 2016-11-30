@@ -1,102 +1,69 @@
-
-using System.Linq;
-using System.Web.Mvc;
+﻿using System.Net.Mail;
+using ErieGarbageOnline.Database;
 using ErieGarbageOnline.Models;
-using ErieGarbageOnline.Models.DatabaseModels;
-using ErieGarbageOnline.Utilities;
 
 namespace ErieGarbageOnline.Controllers
 {
-    [Utilities.Filter(FilterType.Admin)]
-    public class AdminController : ShareController
+    class AdminController
     {
+        private EGODatabase _database = EGODatabase.Create();
+        private Admin admin;
 
-        private readonly EGODatabase _database = EGODatabase.Create();
-
-        /// <summary>
-        /// Creates a new admin user to add to the database
-        /// </summary>
-        /// <param name="admin"></param>
-        /// <returns></returns>
-        public ActionResult CreateNewAdmin(AdminModel admin)
+        public AdminController(Admin admin)
         {
-            // create admin from front end model
-<<<<<<< HEAD
-            var newAdmin = new Admin() {Email = admin.Email, Password = admin.Password, Firstname = admin.Firstname, Lastname = admin.Lastname};
-            
-=======
-            var newAdmin = new Admin {Email = admin.Email, Firstname = admin.Firstname, Lastname = admin.Lastname};
+            this.admin = admin;
 
->>>>>>> 64dae96034b0e486bffa0a3727a32467c09858c2
-            if (AuthenticateNewAdmin(newAdmin))
+        }
+        public void CreateAdmin(Admin newAdmin)
+        {
+            if (IsAdminValid(newAdmin))
             {
-                _database.Admins.Add(newAdmin);
-                _database.SaveChanges();
-                return Json("Admin successfully authenticated and added to DB.");
+                // Add the admin to the database
+                // save changes
+                // Display confirmation
             }
-
-            return Json("admin could not be authenticated and not added to DB.");
         }
 
-        /// <summary>
-        /// Checks to see if a new admin is valid
-        /// </summary>
-        /// <param name="newAdmin"></param>
-        /// <returns></returns>
-        private bool AuthenticateNewAdmin(Admin newAdmin)
+        private bool IsAdminValid(Admin newAdmin)
         {
-            if (newAdmin.Firstname == null || newAdmin.Lastname == null || newAdmin.Email == null)
+            if (newAdmin.Email == null)
                 return false;
-
-            if (_database.Admins.Any(admin => admin.Email.Equals(newAdmin.Email)))
+            if (newAdmin.Password == null)
                 return false;
-
-            if (_database.Customers.Any(customer => customer.Email.Equals(newAdmin.Email)))
+            if (newAdmin.Firstname == null)
                 return false;
-
-            if (!newAdmin.Email.Contains("@"))
-                return false;
-
-            if (newAdmin.Password.Equals(""))
+            if (newAdmin.Lastname == null)
                 return false;
 
             return true;
-
         }
 
-        /// <summary>
-        /// Check 
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult CheckCustomerAccountsW()
+        public void SendEmail(string receiver, string subject, string body)
         {
-            var custList = _database.Customers.ToList();
+            string sender = "admin@ErieGarbageOnline.com";
 
+            var mail = new MailMessage(sender, receiver);
+            var client = new SmtpClient
+            {
+                Port = 25,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Host = "smtp.google.com"
+            };
+
+            mail.Subject = subject;
+            mail.Body = body;
+
+            try
+            {
+                client.Send(mail);
+            }
+            catch
+            {
+                // message that mail could not be sent
+            }
         }
 
-        // moves to the admin creation page
-        public ActionResult AdminCreation()
-        {
-            return View();
-        }
-
-        // moves to admin messaging center
-        public ActionResult MessagingCenter()
-        {
-            return View();
-        }
-
-        // moves to customer view
-        public ActionResult DuePayments()
-        {
-            return View();
-        }
-
-        // return home
-        public override ActionResult Index()
-        {
-            return View();
-        }
 
     }
 }
