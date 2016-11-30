@@ -1,6 +1,7 @@
 ﻿using System.Net.Mail;
 using ErieGarbageOnline.Database;
 using ErieGarbageOnline.Models;
+using ErieGarbageOnline.Views;
 
 namespace ErieGarbageOnline.Controllers
 {
@@ -8,10 +9,13 @@ namespace ErieGarbageOnline.Controllers
     {
         private EGODatabase _database = EGODatabase.Create();
         private Admin admin;
+        private AdminWindow view;
 
         public AdminController(Admin admin)
         {
             this.admin = admin;
+            view = new AdminWindow();
+            view.Show();
 
         }
         public void CreateAdmin(Admin newAdmin)

@@ -8,7 +8,7 @@ namespace ErieGarbageOnline.Models
     {
         public int CustomerId { get; set; }
         public string MessageBody { get; set; }
-        public DateTime Date { get; } = DateTime.Now;
+        public DateTime Date { get; set; } = DateTime.Now;
         public bool Viewed { get; set; }
         public bool Responded { get; set; }
         public override bool CheckValidity()
