@@ -1,8 +1,7 @@
+using System.Data.Entity.Migrations;
+
 namespace ErieGarbageOnline.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class Update2 : DbMigration
     {
         public override void Up()
@@ -12,7 +11,7 @@ namespace ErieGarbageOnline.Migrations
         
         public override void Down()
         {
-            AddColumn("dbo.Messages", "Date", c => c.DateTime(nullable: false));
+            AddColumn("dbo.Messages", "Date", c => c.DateTime(false));
         }
     }
 }

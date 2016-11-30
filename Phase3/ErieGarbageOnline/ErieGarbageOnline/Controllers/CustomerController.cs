@@ -47,15 +47,42 @@ namespace ErieGarbageOnline.Controllers
 
             var cust = _database.Customers.FirstOrDefault(customer => customer.Email.Equals(user.Email));
             if (cust == null) return RedirectToAction("Index", "Login");
+            Message message;
 
-            var message = new Message {MessageBody = model.MessageBody, MessageType = model.MessageType, CustomerId = cust.CustomerId};
-            if (message.CheckValidity())
-            {
-                _database.Messages.Add(message);
-                _database.SaveChanges();
-                return Json("Message Sent Successfully");
-            }
-            return Json("Message failed");
+            if (model.MessageType == MessageType.Complaint)
+                message = new Complaint{MessageBody = model.MessageBody, CustomerId = cust.CustomerId};
+            else if (model.MessageType == MessageType.Dispute)
+                message = new Dispute{ MessageBody = model.MessageBody, CustomerId = cust.CustomerId, BillId = model.BillId};
+            else if (model.MessageType == MessageType.Suspension)
+                message = new Suspension
+                {
+                    MessageBody = model.MessageBody,
+                    CustomerId = cust.CustomerId,
+                    SuspensionEnds = model.SuspensionEnds
+                };
+            else
+                return Json("Message failed");
+
+            if (!message.CheckValidity()) return Json("Message failed");
+
+            _database.Messages.Add(message);
+            _database.SaveChanges();
+            return Json("Message Sent Successfully");
+        }
+
+        public PartialViewResult Complaint()
+        {
+            return PartialView();
+        }
+
+        public PartialViewResult Suspension()
+        {
+            return PartialView();
+        }
+
+        public PartialViewResult Dispute()
+        {
+            return PartialView();
         }
 
         public ActionResult CancelAccount()

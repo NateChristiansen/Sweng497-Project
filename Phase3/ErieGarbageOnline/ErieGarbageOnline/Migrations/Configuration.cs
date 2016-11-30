@@ -1,11 +1,9 @@
+using System.Data.Entity.Migrations;
+using ErieGarbageOnline.Models.DatabaseModels;
+
 namespace ErieGarbageOnline.Migrations
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<ErieGarbageOnline.Models.DatabaseModels.EGODatabase>
+    internal sealed class Configuration : DbMigrationsConfiguration<EGODatabase>
     {
         public Configuration()
         {
@@ -13,7 +11,7 @@ namespace ErieGarbageOnline.Migrations
             ContextKey = "ErieGarbageOnline.Models.DatabaseModels.EGODatabase";
         }
 
-        protected override void Seed(ErieGarbageOnline.Models.DatabaseModels.EGODatabase context)
+        protected override void Seed(EGODatabase context)
         {
             //  This method will be called after migrating to the latest version.
 

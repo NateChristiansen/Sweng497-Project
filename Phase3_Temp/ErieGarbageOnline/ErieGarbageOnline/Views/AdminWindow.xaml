@@ -1,0 +1,22 @@
+﻿<Window x:Class="ErieGarbageOnline.Views.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Admin Control Panel" Height="447.4" Width="590">
+    <Grid Margin="-4,31,4,-31.4">
+        <TabControl HorizontalAlignment="Left" Height="335" Margin="10,19,0,0" VerticalAlignment="Top" Width="574">
+            <TabItem Header="Create Admin">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="View Messages">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Email Customer">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Due Payments">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using ErieGarbageOnline.Models.DatabaseModels;
 
 namespace ErieGarbageOnline.Models
 {
-    public class AdminModel
+    class Admin
     {
         public string Email { get; set; }
         public string Password { get; set; }

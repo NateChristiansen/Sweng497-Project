@@ -3,7 +3,6 @@ using System.Linq;
 using System.Web.Mvc;
 using ErieGarbageOnline.Models;
 using ErieGarbageOnline.Models.DatabaseModels;
-﻿using System.Web.Mvc;
 using ErieGarbageOnline.Utilities;
 
 namespace ErieGarbageOnline.Controllers
@@ -22,8 +21,13 @@ namespace ErieGarbageOnline.Controllers
         public ActionResult CreateNewAdmin(AdminModel admin)
         {
             // create admin from front end model
+<<<<<<< HEAD
             var newAdmin = new Admin() {Email = admin.Email, Password = admin.Password, Firstname = admin.Firstname, Lastname = admin.Lastname};
             
+=======
+            var newAdmin = new Admin {Email = admin.Email, Firstname = admin.Firstname, Lastname = admin.Lastname};
+
+>>>>>>> 64dae96034b0e486bffa0a3727a32467c09858c2
             if (AuthenticateNewAdmin(newAdmin))
             {
                 _database.Admins.Add(newAdmin);
