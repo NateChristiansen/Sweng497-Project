@@ -136,6 +136,41 @@ namespace ErieGarbageOnline.Database
             }
         }
 
+        public bool AddAdmin(Admin admin)
+        {
+            try
+            {
+                var set = data[Databases.Admins];
+                SetId(set, admin);
+                if (!admin.CheckValidity()) return false;
+                if (EmailExistsInDb(admin.Email)) return false;
+                set.Add(admin);
+                SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
+        }
+
+        public bool EmailExistsInDb(string email)
+        {
+            if (this.Admins().Any(admin => email.Equals(admin.Email)))
+            {
+                return true;
+            }
+
+            if (this.Customers().Any(admin => email.Equals(admin.Email)))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public bool AddDispute(Dispute dispute)
         {
             try
