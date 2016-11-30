@@ -35,10 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -75,7 +71,6 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Database\EGODatabase.cs" />
     <Compile Include="Views\AdminWindow.xaml.cs">
-    <Compile Include="Models\DbItem.cs" />
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginWindow.xaml.cs">
@@ -85,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\DbItem.cs" />
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Complaint.cs" />
     <Compile Include="Models\Customer.cs" />
