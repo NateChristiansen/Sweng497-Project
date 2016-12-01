@@ -90,16 +90,25 @@ namespace ErieGarbageOnline.Controllers
 
         public RespondToMessageWindow GetMessageResponseFromIndex(int index)
         {
-            var msg = Database.AllMessages()[index];
-            var msgResponseView = new RespondToMessageWindow(msg, this);
-            msg.Viewed = true;
-            return msgResponseView;
+            if (index >= 0 && index < Database.AllMessages().Count)
+            {
+                var msg = Database.AllMessages()[index];
+                if (msg.CheckValidity())
+                {
+                    var msgResponseView = new RespondToMessageWindow(msg, this);
+                    msg.Viewed = true;
+                    return msgResponseView;
+                }
+
+            }
+
+            return null;
         }
 
         public void RespondToMessage(Message msg, RespondToMessageWindow msgResponseView)
         {
             // Make sure message is selected
-            if (view.dataGrid.SelectedIndex >= 0)
+            if (msgResponseView != null)
             {
                 if (msgResponseView.RespondToMsgBox == null || msgResponseView.RespondToMsgBox.Text.Equals(""))
                 {
