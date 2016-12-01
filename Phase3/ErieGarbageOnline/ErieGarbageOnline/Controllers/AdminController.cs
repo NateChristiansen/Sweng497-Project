@@ -112,8 +112,8 @@ namespace ErieGarbageOnline.Controllers
 
         public void GetDueBills()
         {
-            view.DuePayments.Items.Clear();
-            view.DuePayments.ItemsSource = Database.Bills().Where(bill => bill.Unpaid);
+            //view.DuePayments.Items.Clear();
+            //view.DuePayments.ItemsSource = Database.Bills().Where(bill => bill.Unpaid);
         }
     }
 }
