@@ -54,12 +54,7 @@ namespace ErieGarbageOnline.Views
         
         private void MessageRespondButton_Click(object sender, RoutedEventArgs e)
         {
-<<<<<<< Updated upstream
-            var responseView = _adminController.GetMessageResponseFromIndex(this.dataGrid.SelectedIndex);
-            responseView?.Show();
-=======
             _adminController.RespondToMessage();
->>>>>>> Stashed changes
         }
     }
 }

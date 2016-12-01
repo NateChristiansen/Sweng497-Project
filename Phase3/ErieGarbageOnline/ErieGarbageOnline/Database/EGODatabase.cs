@@ -14,7 +14,7 @@ namespace ErieGarbageOnline.Database
         private readonly string location = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName +
                                            "/Database/Database.ego";
 
-        private readonly Dictionary<Databases, List<DbItem>> data;
+        private Dictionary<Databases, List<DbItem>> data;
 
         private EGODatabase()
         {
@@ -30,96 +30,122 @@ namespace ErieGarbageOnline.Database
             {
                 data = null;
             }
-            if (data == null)
-            {
-                data = new Dictionary<Databases, List<DbItem>>
-                {
-                    [Databases.Customers] = new List<DbItem>(),
-                    [Databases.Admins] = new List<DbItem>(),
-                    [Databases.Bills] = new List<DbItem>(),
-                    [Databases.Complaints] = new List<DbItem>(),
-                    [Databases.Suspensions] = new List<DbItem>(),
-                    [Databases.Disputes] = new List<DbItem>()
-                };
-                AddAdmin(new Admin
-                {
-                    Email = "test@test.com",
-                    Firstname = "testmin",
-                    Lastname = "mctest",
-                    Password = "test"
-                });
-                AddCustomer(new Customer
-                {
-                    Address = "1234 test rd",
-                    City = "test",
-                    Country = "test",
-                    Email = "cust1@test.com",
-                    Firstname = "jake",
-                    Lastname = "suxk",
-                    Password = "test",
-                    PostalCode = "12345",
-                    State = "PA"
-                });
-                AddCustomer(new Customer
-                {
-                    Address = "1235 test rd",
-                    City = "test",
-                    Country = "test",
-                    Email = "cust2@test.com",
-                    Firstname = "nate",
-                    Lastname = "rulz",
-                    Password = "test",
-                    PostalCode = "12345",
-                    State = "PA"
-                });
-                AddCustomer(new Customer
-                {
-                    Address = "1236 test rd",
-                    City = "test",
-                    Country = "test",
-                    Email = "cust3@test.com",
-                    Firstname = "alex",
-                    Lastname = "nowork",
-                    Password = "test",
-                    PostalCode = "12345",
-                    State = "PA"
-                });
-                AddBill(new Bill
-                {
-                    Amount = new decimal(6999999999.9),
-                    CustomerId = 2,
-                    Paid = false
-                });
-                AddBill(new Bill
-                {
-                    Amount = new decimal(10),
-                    CustomerId = 1,
-                    Paid = true
-                });
-                AddBill(new Bill
-                {
-                    Amount = new decimal(100),
-                    CustomerId = 0,
-                    Paid = true
-                });
-                AddBill(new Bill
-                {
-                    Amount = new decimal(100),
-                    CustomerId = 0,
-                    Paid = false
-                });
-                AddBill(new Bill
-                {
-                    Amount = new decimal(50),
-                    CustomerId = 1,
-                    Paid = true
-                });
-            }
         }
 
         public static EGODatabase Create()
         {
-            return database ?? (database = new EGODatabase());
+            if (database != null) return database;
+            database = new EGODatabase();
+            
+            return database;
+        }
+
+        public void init()
+        {
+            database.data = new Dictionary<Databases, List<DbItem>>
+            {
+                [Databases.Customers] = new List<DbItem>(),
+                [Databases.Admins] = new List<DbItem>(),
+                [Databases.Bills] = new List<DbItem>(),
+                [Databases.Complaints] = new List<DbItem>(),
+                [Databases.Suspensions] = new List<DbItem>(),
+                [Databases.Disputes] = new List<DbItem>()
+            };
+            database.AddAdmin(new Admin
+            {
+                Email = "test@test.com",
+                Firstname = "testmin",
+                Lastname = "mctest",
+                Password = "test"
+            });
+            database.AddCustomer(new Customer
+            {
+                Address = "1234 test rd",
+                City = "test",
+                Country = "test",
+                Email = "cust1@test.com",
+                Firstname = "jake",
+                Lastname = "suxk",
+                Password = "test",
+                PostalCode = "12345",
+                State = "PA"
+            });
+            database.AddCustomer(new Customer
+            {
+                Address = "1235 test rd",
+                City = "test",
+                Country = "test",
+                Email = "cust2@test.com",
+                Firstname = "nate",
+                Lastname = "rulz",
+                Password = "test",
+                PostalCode = "12345",
+                State = "PA"
+            });
+            database.AddCustomer(new Customer
+            {
+                Address = "1236 test rd",
+                City = "test",
+                Country = "test",
+                Email = "cust3@test.com",
+                Firstname = "alex",
+                Lastname = "nowork",
+                Password = "test",
+                PostalCode = "12345",
+                State = "PA"
+            });
+            database.AddBill(new Bill
+            {
+                Amount = new decimal(6999999999.9),
+                CustomerId = 2,
+                Paid = false
+            });
+            database.AddBill(new Bill
+            {
+                Amount = new decimal(10),
+                CustomerId = 1,
+                Paid = true
+            });
+            database.AddBill(new Bill
+            {
+                Amount = new decimal(100),
+                CustomerId = 0,
+                Paid = true
+            });
+            database.AddBill(new Bill
+            {
+                Amount = new decimal(100),
+                CustomerId = 0,
+                Paid = false
+            });
+            database.AddBill(new Bill
+            {
+                Amount = new decimal(50),
+                CustomerId = 1,
+                Paid = true
+            });
+            database.AddComplaint(new Complaint
+            {
+                CustomerId = 0,
+                MessageBody = "You suck"
+            });
+            database.AddComplaint(new Complaint
+            {
+                CustomerId = 1,
+                MessageBody = "You really sux"
+            });
+            database.AddSuspension(new Suspension
+            {
+                CustomerId = 2,
+                MessageBody = "I am homeless",
+                SuspensionEnds = new DateTime(2016, 12, 3)
+            });
+            database.AddDispute(new Dispute
+            {
+                BillId = 2,
+                MessageBody = "pls cancle",
+                CustomerId = 0
+            });
         }
 
         public List<Customer> Customers()
@@ -169,7 +195,7 @@ namespace ErieGarbageOnline.Database
 
         public List<Message> AllMessages()
         {
-            var messages = data[Databases.Complaints];
+            var messages = data[Databases.Complaints].ToList();
             messages.AddRange(data[Databases.Disputes]);
             messages.AddRange(data[Databases.Suspensions]);
             return messages.Cast<Message>().ToList();
@@ -355,9 +381,9 @@ namespace ErieGarbageOnline.Database
             {
                 set = data[Databases.Disputes];
             }
-            else if (m.GetType() == typeof(Dispute))
+            else if (m.GetType() == typeof(Suspension))
             {
-                set = data[Databases.Disputes];
+                set = data[Databases.Suspensions];
             }
             var msg = set?.FirstOrDefault(c => c.Id == m.Id) as Message;
             return msg;

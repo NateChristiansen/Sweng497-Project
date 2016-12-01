@@ -20,7 +20,6 @@ namespace ErieGarbageOnline.Controllers
             RefreshMessageList();
             GetDueBills();
             view.Show();
-
         }
 
         public void CreateAdmin(Admin newAdmin)
@@ -91,32 +90,10 @@ namespace ErieGarbageOnline.Controllers
 
         public void RespondToMessage()
         {
-<<<<<<< Updated upstream
-            if (index >= 0 && index < Database.AllMessages().Count)
-            {
-                var msg = Database.AllMessages()[index];
-                if (msg.CheckValidity())
-                {
-                    var msgResponseView = new RespondToMessageWindow(msg, this);
-                    msg.Viewed = true;
-                    return msgResponseView;
-                }
-
-            }
-
-            return null;
-        }
-
-        public void RespondToMessage(Message msg, RespondToMessageWindow msgResponseView)
-        {
-            // Make sure message is selected
-            if (msgResponseView != null)
-=======
             var msg = view.MessageTable.SelectedItem as Message;
             var msgResponseView = new RespondToMessageWindow(msg);
             msgResponseView.ShowDialog();
             if (msgResponseView.RespondToMsgBox == null || msgResponseView.RespondToMsgBox.Text.Equals(""))
->>>>>>> Stashed changes
             {
                 MessageBox.Show(view, "No message to send");
             }
@@ -135,6 +112,7 @@ namespace ErieGarbageOnline.Controllers
                     }
                 }
             }
+            RefreshMessageList();
         }
 
         public void RefreshMessageList()
