@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using ErieGarbageOnline.Database;
 using ErieGarbageOnline.Models;
 using ErieGarbageOnline.Views;
 
@@ -14,11 +8,11 @@ namespace ErieGarbageOnline.Controllers
     public class CustomerController : SharedController
     {
         private readonly CustomerWindow view;
-        private readonly EGODatabase database = EGODatabase.Create();
         public CustomerController(Customer customer)
         {
             view = new CustomerWindow(this);
-            _user = customer;
+            User = customer;
+            GetBills();
             view.Show();
         }
 
@@ -27,27 +21,27 @@ namespace ErieGarbageOnline.Controllers
             bool success = false;
             if (view.ComplaintButton.IsChecked == true)
             {
-                success = database.AddComplaint(new Complaint
+                success = Database.AddComplaint(new Complaint
                 {
                     MessageBody = view.Complaint.Message.Text,
-                    CustomerId = _user.Id
+                    CustomerId = User.Id
                 });
             }
             else if (view.DisputeButton.IsChecked == true)
             {
-                success = database.AddDispute(new Dispute
+                success = Database.AddDispute(new Dispute
                 {
                     MessageBody = view.Dispute.Message.Text,
                     BillId = int.Parse(view.Dispute.BillIdBox.Text),
-                    CustomerId = _user.Id
+                    CustomerId = User.Id
                 });
             }
             else if (view.SuspensionButton.IsChecked == true)
             {
-                success = database.AddSuspension(new Suspension
+                success = Database.AddSuspension(new Suspension
                 {
                     MessageBody = view.Suspension.Message.Text,
-                    CustomerId = _user.Id,
+                    CustomerId = User.Id,
                     SuspensionEnds = view.Suspension.SuspensionDate.DisplayDate
                 });
             }
@@ -66,6 +60,11 @@ namespace ErieGarbageOnline.Controllers
                 view.Dispute.Visibility = Visibility.Visible;
             else if (view.SuspensionButton.IsChecked == true)
                 view.Suspension.Visibility = Visibility.Visible;
+        }
+
+        public void GetBills()
+        {
+            view.Bills.ItemsSource = Database.Bills().Where(b => b.CustomerId == User.Id);
         }
     }
 }

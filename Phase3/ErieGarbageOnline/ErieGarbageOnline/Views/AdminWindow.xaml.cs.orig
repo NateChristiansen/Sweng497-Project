@@ -10,8 +10,12 @@ namespace ErieGarbageOnline.Views
     /// </summary>
     public partial class AdminWindow : Window
     {
-        private readonly AdminController _adminController;
+<<<<<<< HEAD
+        private AdminController _adminController;
         //public List<Message> msgList; 
+=======
+        private readonly AdminController _adminController;
+>>>>>>> 24ba4d4cdf9f693e1a631cfead343a99dcd07885
         public AdminWindow(AdminController adminController)
         {
             _adminController = adminController;

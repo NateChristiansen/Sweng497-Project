@@ -1,15 +1,16 @@
 ﻿using System.Linq;
 using ErieGarbageOnline.Database;
+using ErieGarbageOnline.Views;
 
 namespace ErieGarbageOnline.Controllers
 {
     public class LoginController
     {
-        private Views.LoginWindow view;
+        private LoginWindow view;
         private EGODatabase database = EGODatabase.Create();
         public LoginController()
         {
-            view = new Views.LoginWindow(this);
+            view = new LoginWindow(this);
             view.Show();
         }
 
