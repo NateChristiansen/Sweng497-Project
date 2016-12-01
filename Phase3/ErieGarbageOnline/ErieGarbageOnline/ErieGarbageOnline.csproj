@@ -61,10 +61,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Views\RespondToMessageWindow.xaml.cs">
+    <Compile Include="Views\Admin\RespondToMessageWindow.xaml.cs">
       <DependentUpon>RespondToMessageWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\AdminWindow.xaml">
+    <Page Include="Views\Admin\AdminWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -88,7 +88,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LoginWindow.xaml">
+    <Page Include="Views\Login\LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -102,7 +102,7 @@
     <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Database\EGODatabase.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Views\AdminWindow.xaml.cs">
+    <Compile Include="Views\Admin\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\DbItem.cs" />
@@ -121,11 +121,11 @@
     <Compile Include="Views\Customer\ViewBill.xaml.cs">
       <DependentUpon>ViewBill.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LoginWindow.xaml.cs">
+    <Compile Include="Views\Login\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\RespondToMessageWindow.xaml">
+    <Page Include="Views\Admin\RespondToMessageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

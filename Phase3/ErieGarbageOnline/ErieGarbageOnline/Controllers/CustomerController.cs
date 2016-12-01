@@ -6,6 +6,7 @@ using ErieGarbageOnline.Models;
 using ErieGarbageOnline.Views;
 using ErieGarbageOnline.Views.Customer;
 using Complaint = ErieGarbageOnline.Models.Complaint;
+using CustomerWindow = ErieGarbageOnline.Views.Customer.CustomerWindow;
 using Dispute = ErieGarbageOnline.Models.Dispute;
 using Suspension = ErieGarbageOnline.Models.Suspension;
 
@@ -16,7 +17,7 @@ namespace ErieGarbageOnline.Controllers
         private readonly CustomerWindow view;
         public CustomerController(Customer customer)
         {
-            view = new CustomerWindow(this);
+            view = new CustomerWindow(this) { WelcomeLabel = { Content = "Welcome, " + customer.Email } };
             User = customer;
             GetBills();
             view.Show();
