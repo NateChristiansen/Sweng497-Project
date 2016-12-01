@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using ErieGarbageOnline.Controllers;
 using ErieGarbageOnline.Models;
 
@@ -10,6 +11,7 @@ namespace ErieGarbageOnline.Views
     public partial class AdminWindow : Window
     {
         private AdminController _adminController;
+        //public List<Message> msgList; 
         public AdminWindow(AdminController adminController)
         {
             this._adminController = adminController;
