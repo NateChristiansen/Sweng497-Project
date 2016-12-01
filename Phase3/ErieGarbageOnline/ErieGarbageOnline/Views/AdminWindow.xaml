@@ -35,6 +35,14 @@
             </TabItem>
             <TabItem Header="Due Payments">
                 <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="DuePayments" HorizontalAlignment="Left" Margin="0,35,0,0" VerticalAlignment="Top" Height="272" Width="568" AutoGenerateColumns="False" ItemsSource="{Binding Source=Bill}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Customer" Binding="{Binding Path=CustomerId}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Due Date" Binding="{Binding Path=DueDate, StringFormat=dd/MM/yyyy}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Amount" Binding="{Binding Path=Amount, StringFormat='c'}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="DueBillRefreshButton" Content="Button" HorizontalAlignment="Left" Margin="483,10,0,0" VerticalAlignment="Top" Width="75" Click="DueBillRefreshButton_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>

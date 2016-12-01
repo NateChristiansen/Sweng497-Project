@@ -88,31 +88,31 @@ namespace ErieGarbageOnline.Database
                 {
                     Amount = new decimal(6999999999.9),
                     CustomerId = 2,
-                    Unpaid = true
+                    Paid = false
                 });
                 AddBill(new Bill
                 {
                     Amount = new decimal(10),
                     CustomerId = 1,
-                    Unpaid = false
+                    Paid = true
                 });
                 AddBill(new Bill
                 {
                     Amount = new decimal(100),
                     CustomerId = 0,
-                    Unpaid = false
+                    Paid = true
                 });
                 AddBill(new Bill
                 {
                     Amount = new decimal(100),
                     CustomerId = 0,
-                    Unpaid = true
+                    Paid = false
                 });
                 AddBill(new Bill
                 {
                     Amount = new decimal(50),
                     CustomerId = 1,
-                    Unpaid = false
+                    Paid = true
                 });
             }
         }
@@ -129,17 +129,10 @@ namespace ErieGarbageOnline.Database
 
         private void SaveChanges()
         {
-            try
+            using (var sw = File.Open(location, FileMode.OpenOrCreate))
             {
-                using (var sw = File.Open(location, FileMode.OpenOrCreate))
-                {
-                    var formatter = new BinaryFormatter();
-                    formatter.Serialize(sw, data);
-                }
-            }
-            catch (Exception)
-            {
-                throw;
+                var formatter = new BinaryFormatter();
+                formatter.Serialize(sw, data);
             }
         }
 
@@ -293,6 +286,23 @@ namespace ErieGarbageOnline.Database
                 SetId(set, suspension);
                 if (!suspension.CheckValidity()) return false;
                 set.Add(suspension);
+                SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool PayBill(Bill b)
+        {
+            try
+            {
+                var set = data[Databases.Bills];
+                var bi = set.FirstOrDefault(bill => bill.Id == b.Id);
+                if (bi == null) return false;
+                ((Bill) bi).Paid = true;
                 SaveChanges();
                 return true;
             }

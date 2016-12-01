@@ -47,5 +47,10 @@ namespace ErieGarbageOnline.Views
         {
             _adminController.Logout();
         }
+
+        private void DueBillRefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            _adminController.GetDueBills();
+        }
     }
 }

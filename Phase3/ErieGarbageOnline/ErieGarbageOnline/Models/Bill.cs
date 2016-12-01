@@ -8,9 +8,9 @@ namespace ErieGarbageOnline.Models
     public class Bill : DbItem
     {
         public int CustomerId { get; set; }
-        public DateTime Date { get; set; } = DateTime.Now;
+        public DateTime DateDue { get; set; } = DateTime.Now;
         public decimal Amount { get; set; }
-        public bool Unpaid { get; set; } = true;
+        public bool Paid { get; set; }
         public override bool CheckValidity()
         {
             var db = EGODatabase.Create();

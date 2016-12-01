@@ -10,6 +10,7 @@ namespace ErieGarbageOnline.Models
         public string Country { get; set; }
         public string State { get; set; }
         public string PostalCode { get; set; }
+        public bool IsSuspended { get; set; }
         public override bool CheckValidity()
         {
             if (Address == null) return false;
