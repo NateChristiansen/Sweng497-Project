@@ -20,6 +20,7 @@ namespace ErieGarbageOnline.Controllers
             view.Show();
 
         }
+
         public void CreateAdmin(Admin newAdmin)
         {
             if (IsAdminValid(newAdmin))

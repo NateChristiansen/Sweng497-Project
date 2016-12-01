@@ -113,9 +113,9 @@ namespace ErieGarbageOnline.Database
                     formatter.Serialize(sw, data);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
 
