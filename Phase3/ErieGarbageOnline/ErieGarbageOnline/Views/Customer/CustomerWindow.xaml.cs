@@ -1,10 +1,7 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Data;
-using System.Windows.Input;
+﻿using System.Windows;
 using ErieGarbageOnline.Controllers;
 
-namespace ErieGarbageOnline.Views
+namespace ErieGarbageOnline.Views.Customer
 {
     /// <summary>
     /// Interaction logic for CustomerWindow.xaml
@@ -36,6 +33,11 @@ namespace ErieGarbageOnline.Views
         private void PayBill(object sender, RoutedEventArgs routedEventArgs)
         {
             controller.OpenBill();
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            controller.Logout();
         }
     }
 }
