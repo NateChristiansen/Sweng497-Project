@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Windows;
+﻿using System.Windows;
 using ErieGarbageOnline.Controllers;
 using ErieGarbageOnline.Models;
 
@@ -46,6 +44,7 @@ namespace ErieGarbageOnline.Views
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
             _adminController.Logout();
+            Close();
         }
 
         private void DueBillRefreshButton_Click(object sender, RoutedEventArgs e)
@@ -55,8 +54,12 @@ namespace ErieGarbageOnline.Views
         
         private void MessageRespondButton_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< Updated upstream
             var responseView = _adminController.GetMessageResponseFromIndex(this.dataGrid.SelectedIndex);
             responseView?.Show();
+=======
+            _adminController.RespondToMessage();
+>>>>>>> Stashed changes
         }
     }
 }

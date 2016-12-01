@@ -248,12 +248,12 @@ namespace ErieGarbageOnline.Database
 
         public bool EmailExistsInDb(string email)
         {
-            if (this.Admins().Any(admin => email.Equals(admin.Email)))
+            if (Admins().Any(admin => email.Equals(admin.Email)))
             {
                 return true;
             }
 
-            if (this.Customers().Any(admin => email.Equals(admin.Email)))
+            if (Customers().Any(admin => email.Equals(admin.Email)))
             {
                 return true;
             }
@@ -310,6 +310,57 @@ namespace ErieGarbageOnline.Database
             {
                 return false;
             }
+        }
+
+        public bool ViewMessage(Message m)
+        {
+            try
+            {
+                var msg = GetMessage(m);
+                if (msg == null) return false;
+                msg.Viewed = true;
+                SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool RespondToMessage(Message m)
+        {
+            try
+            {
+                var msg = GetMessage(m);
+                if (msg == null) return false;
+                msg.Responded = true;
+                SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        private Message GetMessage(Message m)
+        {
+            List<DbItem> set = null;
+            if (m.GetType() == typeof(Complaint))
+            {
+                set = data[Databases.Complaints];
+            }
+            else if (m.GetType() == typeof(Dispute))
+            {
+                set = data[Databases.Disputes];
+            }
+            else if (m.GetType() == typeof(Dispute))
+            {
+                set = data[Databases.Disputes];
+            }
+            var msg = set?.FirstOrDefault(c => c.Id == m.Id) as Message;
+            return msg;
         }
     }
 }

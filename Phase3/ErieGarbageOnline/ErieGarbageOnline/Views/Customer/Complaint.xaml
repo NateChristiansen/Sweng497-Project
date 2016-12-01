@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ErieGarbageOnline.Views.Customer"
              mc:Ignorable="d" 
-             d:DesignHeight="321" d:DesignWidth="529">
+             d:DesignHeight="260" d:DesignWidth="529">
     <Grid Background="White">
         <Label Content="Complaint" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Message" AcceptsReturn="True" HorizontalAlignment="Left" Margin="10,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="275" Width="509"/>
+        <TextBox x:Name="Message" AcceptsReturn="True" HorizontalAlignment="Left" Margin="10,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="214" Width="509"/>
 
     </Grid>
 </UserControl>

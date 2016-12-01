@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using ErieGarbageOnline.Models;
-using ErieGarbageOnline.Views;
 using ErieGarbageOnline.Views.Customer;
 using Complaint = ErieGarbageOnline.Models.Complaint;
-using CustomerWindow = ErieGarbageOnline.Views.Customer.CustomerWindow;
 using Dispute = ErieGarbageOnline.Models.Dispute;
 using Suspension = ErieGarbageOnline.Models.Suspension;
 
@@ -52,7 +49,12 @@ namespace ErieGarbageOnline.Controllers
                     SuspensionEnds = (DateTime) view.Suspension.SuspensionDate.SelectedDate
                 });
             }
-            if (success) return;
+            if (success)
+            {
+                MessageBox.Show(view, "Message sent successfully.", "Message Sent", MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+                return;
+            }
             MessageBox.Show(view, "Error: Failed to send message.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
@@ -64,7 +66,10 @@ namespace ErieGarbageOnline.Controllers
             if (view.ComplaintButton.IsChecked == true)
                 view.Complaint.Visibility = Visibility.Visible;
             else if (view.DisputeButton.IsChecked == true)
+            {
                 view.Dispute.Visibility = Visibility.Visible;
+                view.Dispute.BillIdBox.ItemsSource = Database.Bills().Where(b => b.CustomerId == User.Id).Select(b => b.Id);
+            }
             else if (view.SuspensionButton.IsChecked == true)
                 view.Suspension.Visibility = Visibility.Visible;
         }

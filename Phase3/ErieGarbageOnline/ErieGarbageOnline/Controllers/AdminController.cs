@@ -17,6 +17,7 @@ namespace ErieGarbageOnline.Controllers
             User = admin;
             view = new AdminWindow(this) {WelcomeLabel = {Content = "Welcome, " + admin.Email}};
             FillEmailReceiverBox();
+            RefreshMessageList();
             GetDueBills();
             view.Show();
 
@@ -88,8 +89,9 @@ namespace ErieGarbageOnline.Controllers
             }
         }
 
-        public RespondToMessageWindow GetMessageResponseFromIndex(int index)
+        public void RespondToMessage()
         {
+<<<<<<< Updated upstream
             if (index >= 0 && index < Database.AllMessages().Count)
             {
                 var msg = Database.AllMessages()[index];
@@ -109,34 +111,35 @@ namespace ErieGarbageOnline.Controllers
         {
             // Make sure message is selected
             if (msgResponseView != null)
+=======
+            var msg = view.MessageTable.SelectedItem as Message;
+            var msgResponseView = new RespondToMessageWindow(msg);
+            msgResponseView.ShowDialog();
+            if (msgResponseView.RespondToMsgBox == null || msgResponseView.RespondToMsgBox.Text.Equals(""))
+>>>>>>> Stashed changes
             {
-                if (msgResponseView.RespondToMsgBox == null || msgResponseView.RespondToMsgBox.Text.Equals(""))
-                {
-                    MessageBox.Show(view, "No message to send");
-                }
-                else
-                {
-                    var customer = GetCustomerById(Convert.ToInt32(msgResponseView.MsgCustomerIdBox.Text));
+                MessageBox.Show(view, "No message to send");
+            }
+            else
+            {
+                var customer = GetCustomerById(Convert.ToInt32(msgResponseView.MsgCustomerIdBox.Text));
 
-                    if (customer != null)
+                if (customer != null)
+                {
+                    string subject = "EGO: Response to your " + msgResponseView.MsgTypeBox;
+                    string body = msgResponseView.RespondToMsgBox.Text;
+                    if (SendEmail(customer.Email, subject, body))
                     {
-                        string subject = "EGO: Response to your " + msgResponseView.MsgTypeBox;
-                        string body = msgResponseView.RespondToMsgBox.Text;
-                        if (SendEmail(customer.Email, subject, body))
-                        {
-                            msg.Responded = true;
-                            msgResponseView.Close();
-                            RefreshMessageList();
-                        }
+                        Database.RespondToMessage(msg);
+                        RefreshMessageList();
                     }
                 }
             }
         }
 
-        private void RefreshMessageList()
+        public void RefreshMessageList()
         {
-
-            view.dataGrid.Items.Refresh();
+            view.MessageTable.ItemsSource = Database.AllMessages();
         }
 
         private Customer GetCustomerById(int custId)

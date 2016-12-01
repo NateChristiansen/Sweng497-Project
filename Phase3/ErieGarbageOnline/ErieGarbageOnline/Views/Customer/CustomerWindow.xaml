@@ -12,14 +12,14 @@
             <TabItem Header="Contact Us">
                 <Grid>
                     <Label x:Name="label" Content="Message Type" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                    <StackPanel x:Name="RadioGroup" Margin="100,10,343,321">
+                    <StackPanel x:Name="RadioGroup" Margin="100,10,343,265">
                         <RadioButton x:Name="ComplaintButton" Content="Complaint" Checked="MessageTypeClicked" GroupName="MessageType"/>
                         <RadioButton x:Name="DisputeButton" Content="Bill Dispute" Checked="MessageTypeClicked"  GroupName="MessageType"/>
                         <RadioButton x:Name="SuspensionButton" Content="Requrest Suspension" Checked="MessageTypeClicked"  GroupName="MessageType"/>
                     </StackPanel>
-                    <Customer:Complaint x:Name="Complaint" Margin="0,61,0,0" Visibility="Hidden"/>
-                    <Customer:Dispute x:Name="Dispute" HorizontalAlignment="Left" Margin="0,61,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-                    <Customer:Suspension x:Name="Suspension" HorizontalAlignment="Left" Margin="0,61,0,0" VerticalAlignment="Top" Visibility="Hidden" />
+                    <Customer:Complaint x:Name="Complaint" Margin="0,66,0,0" Visibility="Hidden"/>
+                    <Customer:Dispute x:Name="Dispute" HorizontalAlignment="Left" Margin="0,66,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+                    <Customer:Suspension x:Name="Suspension" HorizontalAlignment="Left" Margin="0,66,0,0" VerticalAlignment="Top" Visibility="Hidden" />
                     <Button x:Name="SendButton" Content="Send" HorizontalAlignment="Left" Margin="241,13,0,0" VerticalAlignment="Top" Width="75" Click="SendButton_Click"/>
                 </Grid>
             </TabItem>
@@ -27,9 +27,10 @@
                 <Grid>
                     <DataGrid x:Name="Bills" Margin="10,35,10,10" Grid.ColumnSpan="2" AutoGenerateColumns="False" ItemsSource="{Binding Source=Bill}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Date Due" Binding="{Binding Path=DateDue, StringFormat=dd/MM/yyyy}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Amount" Binding="{Binding Path=Amount, StringFormat='c'}"></DataGridTextColumn>
-                            <DataGridCheckBoxColumn Header="Paid For" Binding="{Binding Path=Paid}"></DataGridCheckBoxColumn>
+                            <DataGridTextColumn Header="Bill ID" Binding="{Binding Path=Id}" />
+                            <DataGridTextColumn Header="Date Due" Binding="{Binding Path=DateDue, StringFormat=dd/MM/yyyy}" />
+                            <DataGridTextColumn Header="Amount" Binding="{Binding Path=Amount, StringFormat='c'}" />
+                            <DataGridCheckBoxColumn Header="Paid For" Binding="{Binding Path=Paid}" />
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -48,3 +49,18 @@
 
     </Grid>
 </Window>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
