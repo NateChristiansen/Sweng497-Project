@@ -65,7 +65,6 @@ namespace ErieGarbageOnline.Controllers
 
         public void GetBills()
         {
-            view.Bills.Items.Clear();
             view.Bills.ItemsSource = Database.Bills().Where(b => b.CustomerId == User.Id);
         }
     }

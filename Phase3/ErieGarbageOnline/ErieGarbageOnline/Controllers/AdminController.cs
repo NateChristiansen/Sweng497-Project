@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Windows;
@@ -17,6 +18,7 @@ namespace ErieGarbageOnline.Controllers
             view = new AdminWindow(this) {WelcomeLabel = {Content = "Welcome, " + admin.Email}};
             FillEmailReceiverBox();
             view.dataGrid.ItemsSource = Database.AllMessages();
+            GetDueBills();
             view.Show();
 
         }
@@ -106,6 +108,12 @@ namespace ErieGarbageOnline.Controllers
             {
                 view.ReceiverBox.Items.Add(customer.Email);
             }
+        }
+
+        public void GetDueBills()
+        {
+            //view.DuePayments.Items.Clear();
+            //view.DuePayments.ItemsSource = Database.Bills().Where(bill => bill.Unpaid);
         }
     }
 }
