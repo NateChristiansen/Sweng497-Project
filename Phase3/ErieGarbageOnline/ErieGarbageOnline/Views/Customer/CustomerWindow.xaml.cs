@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using System.Windows.Data;
+using System.Windows.Input;
 using ErieGarbageOnline.Controllers;
 
 namespace ErieGarbageOnline.Views
@@ -28,6 +31,11 @@ namespace ErieGarbageOnline.Views
         private void RefreshBills_Click(object sender, RoutedEventArgs e)
         {
             controller.GetBills();
+        }
+
+        private void PayBill(object sender, RoutedEventArgs routedEventArgs)
+        {
+            controller.OpenBill();
         }
     }
 }

@@ -4,6 +4,10 @@ using System.Linq;
 using System.Windows;
 using ErieGarbageOnline.Models;
 using ErieGarbageOnline.Views;
+using ErieGarbageOnline.Views.Customer;
+using Complaint = ErieGarbageOnline.Models.Complaint;
+using Dispute = ErieGarbageOnline.Models.Dispute;
+using Suspension = ErieGarbageOnline.Models.Suspension;
 
 namespace ErieGarbageOnline.Controllers
 {
@@ -67,6 +71,14 @@ namespace ErieGarbageOnline.Controllers
         public void GetBills()
         {
             view.Bills.ItemsSource = Database.Bills().Where(b => b.CustomerId == User.Id);
+        }
+
+        public void OpenBill()
+        {
+            var bill = view.Bills.SelectedItem as Bill;
+            var billwindow = new ViewBill(bill);
+            billwindow.ShowDialog();
+            GetBills();
         }
     }
 }

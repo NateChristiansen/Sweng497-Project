@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using ErieGarbageOnline.Controllers;
 
 namespace ErieGarbageOnline.Views
@@ -18,6 +19,18 @@ namespace ErieGarbageOnline.Views
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             controller.Login();
+        }
+
+        private void EmailField_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                PasswordField.Focus();
+        }
+
+        private void PasswordField_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                controller.Login();
         }
     }
 }
