@@ -27,17 +27,17 @@ namespace ErieGarbageOnline.Controllers
             {
                 if (Database.AddAdmin(newAdmin))
                 {
-                    MessageBox.Show("Admin " + newAdmin.Email + " has been added to the database.");
+                    MessageBox.Show(view, "Admin " + newAdmin.Email + " has been added to the database.");
                 }
                 else
                 {
-                    MessageBox.Show("User already exists in the database.");
+                    MessageBox.Show(view, "User already exists in the database.");
                 }
                 ClearCreateAdminFields();
             }
             else
             {
-                MessageBox.Show("Could not add the admin to the database. Check to make sure fields are correct.");
+                MessageBox.Show(view, "Could not add the admin to the database. Check to make sure fields are correct.");
             }
 
         }
@@ -56,14 +56,6 @@ namespace ErieGarbageOnline.Controllers
                 return false;
 
             return true;
-        }
-
-        private void ClearCreateAdminFields()
-        {
-            view.EmailBox.Clear();
-            view.PasswordBox.Clear();
-            view.FirstNameBox.Clear();
-            view.LastNameBox.Clear();
         }
 
         public void SendEmail(string receiver, string subject, string body)
@@ -86,11 +78,19 @@ namespace ErieGarbageOnline.Controllers
                 ClearEmailFields();
                 MessageBox.Show("Message sent successfully");
             }
-            catch (Exception e)
+            catch
             {
                 // message that mail could not be sent
                 MessageBox.Show("Could not send email");
             }
+        }
+
+        private void ClearCreateAdminFields()
+        {
+            view.EmailBox.Clear();
+            view.PasswordBox.Clear();
+            view.FirstNameBox.Clear();
+            view.LastNameBox.Clear();
         }
 
         private void ClearEmailFields()
