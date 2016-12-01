@@ -47,5 +47,11 @@ namespace ErieGarbageOnline.Views
         {
             _adminController.Logout();
         }
+
+        private void MessageRespondButton_Click(object sender, RoutedEventArgs e)
+        {
+            var responseView = _adminController.GetMessageResponseFromIndex(this.dataGrid.SelectedIndex);
+            responseView.Show();
+        }
     }
 }

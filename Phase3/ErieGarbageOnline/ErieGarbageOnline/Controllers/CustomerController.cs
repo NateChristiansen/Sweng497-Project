@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using ErieGarbageOnline.Models;
@@ -43,7 +44,7 @@ namespace ErieGarbageOnline.Controllers
                 {
                     MessageBody = view.Suspension.Message.Text,
                     CustomerId = User.Id,
-                    SuspensionEnds = view.Suspension.SuspensionDate.DisplayDate
+                    SuspensionEnds = (DateTime) view.Suspension.SuspensionDate.SelectedDate
                 });
             }
             if (success) return;

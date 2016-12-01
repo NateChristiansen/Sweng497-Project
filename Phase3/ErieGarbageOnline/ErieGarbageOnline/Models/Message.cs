@@ -5,7 +5,7 @@ using ErieGarbageOnline.Database;
 namespace ErieGarbageOnline.Models
 {
     [Serializable]
-    abstract class Message : DbItem
+    public abstract class Message : DbItem
     {
         public int CustomerId { get; set; }
         public string MessageBody { get; set; }

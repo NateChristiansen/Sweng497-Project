@@ -60,7 +60,7 @@ namespace ErieGarbageOnline.Controllers
             return true;
         }
 
-        public void SendEmail(string receiver, string subject, string body)
+        public bool SendEmail(string receiver, string subject, string body)
         {
             string sender = User.Email;
 
@@ -79,12 +79,61 @@ namespace ErieGarbageOnline.Controllers
                 client.Send(mail);
                 ClearEmailFields();
                 MessageBox.Show("Message sent successfully");
+                return true;
             }
             catch
             {
                 // message that mail could not be sent
                 MessageBox.Show("Could not send email");
+                return false;
             }
+        }
+
+        public RespondToMessageWindow GetMessageResponseFromIndex(int index)
+        {
+            var msg = Database.AllMessages()[index];
+            var msgResponseView = new RespondToMessageWindow(msg, this);
+            msg.Viewed = true;
+            return msgResponseView;
+        }
+
+        public void RespondToMessage(Message msg, RespondToMessageWindow msgResponseView)
+        {
+            // Make sure message is selected
+            if (view.dataGrid.SelectedIndex >= 0)
+            {
+                if (msgResponseView.RespondToMsgBox == null || msgResponseView.RespondToMsgBox.Text.Equals(""))
+                {
+                    MessageBox.Show(view, "No message to send");
+                }
+                else
+                {
+                    var customer = GetCustomerById(Convert.ToInt32(msgResponseView.MsgCustomerIdBox.Text));
+
+                    if (customer != null)
+                    {
+                        string subject = "EGO: Response to your " + msgResponseView.MsgTypeBox;
+                        string body = msgResponseView.RespondToMsgBox.Text;
+                        if (SendEmail(customer.Email, subject, body))
+                        {
+                            msg.Responded = true;
+                            msgResponseView.Close();
+                            RefreshMessageList();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void RefreshMessageList()
+        {
+
+            view.dataGrid.Items.Refresh();
+        }
+
+        private Customer GetCustomerById(int custId)
+        {
+            return Database.Customers().FirstOrDefault(customer => custId == customer.Id);
         }
 
         private void ClearCreateAdminFields()
