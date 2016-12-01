@@ -20,7 +20,7 @@
             <TabItem Header="View Messages">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="dataGrid" ItemsSource="{Binding }" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="287" Width="548"/>
-                    
+
                 </Grid>
             </TabItem>
             <TabItem Header="Email Customer">
@@ -35,7 +35,6 @@
             </TabItem>
             <TabItem Header="Due Payments">
                 <Grid Background="#FFE5E5E5">
-                    <ListBox x:Name ="DuePaymentBox" HorizontalAlignment="Left" Height="262" Margin="9,18,0,0" VerticalAlignment="Top" Width="216"/>
                 </Grid>
             </TabItem>
         </TabControl>

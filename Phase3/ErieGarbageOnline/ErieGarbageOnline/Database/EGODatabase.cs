@@ -90,6 +90,30 @@ namespace ErieGarbageOnline.Database
                     CustomerId = 2,
                     Unpaid = true
                 });
+                AddBill(new Bill
+                {
+                    Amount = new decimal(10),
+                    CustomerId = 1,
+                    Unpaid = false
+                });
+                AddBill(new Bill
+                {
+                    Amount = new decimal(100),
+                    CustomerId = 0,
+                    Unpaid = false
+                });
+                AddBill(new Bill
+                {
+                    Amount = new decimal(100),
+                    CustomerId = 0,
+                    Unpaid = true
+                });
+                AddBill(new Bill
+                {
+                    Amount = new decimal(50),
+                    CustomerId = 1,
+                    Unpaid = false
+                });
             }
         }
 
