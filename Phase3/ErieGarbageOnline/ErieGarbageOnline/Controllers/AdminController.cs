@@ -25,7 +25,7 @@ namespace ErieGarbageOnline.Controllers
         {
             if (IsAdminValid(newAdmin))
             {
-                if (_database.AddAdmin(newAdmin))
+                if (Database.AddAdmin(newAdmin))
                 {
                     MessageBox.Show("Admin " + newAdmin.Email + " has been added to the database.");
                 }
