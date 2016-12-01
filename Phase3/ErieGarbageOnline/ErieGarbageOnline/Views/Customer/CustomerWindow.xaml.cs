@@ -27,7 +27,7 @@ namespace ErieGarbageOnline.Views
 
         private void RefreshBills_Click(object sender, RoutedEventArgs e)
         {
-
+            controller.GetBills();
         }
     }
 }

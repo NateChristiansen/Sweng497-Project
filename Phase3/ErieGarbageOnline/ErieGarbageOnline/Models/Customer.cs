@@ -12,7 +12,12 @@ namespace ErieGarbageOnline.Models
         public string PostalCode { get; set; }
         public override bool CheckValidity()
         {
-            throw new NotImplementedException();
+            if (Address == null) return false;
+            if (City == null) return false;
+            if (State == null) return false;
+            if (Country == null) return false;
+            if (PostalCode == null) return false;
+            return base.CheckValidity();
         }
     }
 }

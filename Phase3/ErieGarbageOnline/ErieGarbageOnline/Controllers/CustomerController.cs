@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using ErieGarbageOnline.Models;
 using ErieGarbageOnline.Views;
@@ -64,6 +65,7 @@ namespace ErieGarbageOnline.Controllers
 
         public void GetBills()
         {
+            view.Bills.Items.Clear();
             view.Bills.ItemsSource = Database.Bills().Where(b => b.CustomerId == User.Id);
         }
     }

@@ -41,6 +41,55 @@ namespace ErieGarbageOnline.Database
                     [Databases.Suspensions] = new List<DbItem>(),
                     [Databases.Disputes] = new List<DbItem>()
                 };
+                AddAdmin(new Admin
+                {
+                    Email = "test@test.com",
+                    Firstname = "testmin",
+                    Lastname = "mctest",
+                    Password = "test"
+                });
+                AddCustomer(new Customer
+                {
+                    Address = "1234 test rd",
+                    City = "test",
+                    Country = "test",
+                    Email = "cust1@test.com",
+                    Firstname = "jake",
+                    Lastname = "suxk",
+                    Password = "test",
+                    PostalCode = "12345",
+                    State = "PA"
+                });
+                AddCustomer(new Customer
+                {
+                    Address = "1235 test rd",
+                    City = "test",
+                    Country = "test",
+                    Email = "cust2@test.com",
+                    Firstname = "nate",
+                    Lastname = "rulz",
+                    Password = "test",
+                    PostalCode = "12345",
+                    State = "PA"
+                });
+                AddCustomer(new Customer
+                {
+                    Address = "1236 test rd",
+                    City = "test",
+                    Country = "test",
+                    Email = "cust3@test.com",
+                    Firstname = "alex",
+                    Lastname = "nowork",
+                    Password = "test",
+                    PostalCode = "12345",
+                    State = "PA"
+                });
+                AddBill(new Bill
+                {
+                    Amount = new decimal(6999999999.9),
+                    CustomerId = 2,
+                    Unpaid = true
+                });
             }
         }
 
@@ -126,6 +175,23 @@ namespace ErieGarbageOnline.Database
             }
         }
 
+        public bool AddBill(Bill bill)
+        {
+            try
+            {
+                var set = data[Databases.Bills];
+                SetId(set, bill);
+                if (!bill.CheckValidity()) return false;
+                set.Add(bill);
+                SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public bool AddAdmin(Admin admin)
         {
             try
@@ -140,10 +206,27 @@ namespace ErieGarbageOnline.Database
             }
             catch (Exception)
             {
-
                 return false;
             }
 
+        }
+
+        public bool AddCustomer(Customer customer)
+        {
+            try
+            {
+                var set = data[Databases.Customers];
+                SetId(set, customer);
+                if (!customer.CheckValidity()) return false;
+                if (EmailExistsInDb(customer.Email)) return false;
+                set.Add(customer);
+                SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public bool EmailExistsInDb(string email)
