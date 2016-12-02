@@ -61,31 +61,39 @@ namespace ErieGarbageOnline.Controllers
 
         public bool SendEmail(string receiver, string subject, string body)
         {
-            string sender = User.Email;
 
-            var mail = new MailMessage(sender, receiver);
-            var client = new SmtpClient("smtp.gmail.com", 587)
+            if (!string.IsNullOrEmpty(receiver) && !string.IsNullOrEmpty(subject) && !string.IsNullOrEmpty(body))
             {
-                Credentials = new NetworkCredential("needsmtpnow@gmail.com", "ineedsmtp"),
-                EnableSsl = true
-            };
+                string sender = User.Email;
 
-            mail.Subject = subject;
-            mail.Body = body;
+                var mail = new MailMessage(sender, receiver);
+                var client = new SmtpClient("smtp.gmail.com", 587)
+                {
+                    Credentials = new NetworkCredential("needsmtpnow@gmail.com", "ineedsmtp"),
+                    EnableSsl = true
+                };
 
-            try
-            {
-                client.Send(mail);
-                ClearEmailFields();
-                MessageBox.Show("Message sent successfully");
-                return true;
+                mail.Subject = subject;
+                mail.Body = body;
+
+                try
+                {
+                    client.Send(mail);
+                    ClearEmailFields();
+                    MessageBox.Show("Message sent successfully");
+                    return true;
+                }
+                catch
+                {
+                    // message that mail could not be sent
+                    MessageBox.Show("Could not send email");
+                    return false;
+                }
             }
-            catch
-            {
-                // message that mail could not be sent
-                MessageBox.Show("Could not send email");
-                return false;
-            }
+
+            MessageBox.Show("Could not send email");
+            return false;
+
         }
 
         public void RespondToMessage()

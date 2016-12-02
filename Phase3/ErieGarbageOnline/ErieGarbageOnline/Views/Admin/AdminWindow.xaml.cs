@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using ErieGarbageOnline.Controllers;
 using ErieGarbageOnline.Models;
 
@@ -33,9 +34,22 @@ namespace ErieGarbageOnline.Views
 
         private void SendEmailButton_Click(object sender, RoutedEventArgs e)
         {
-            string receiver = ReceiverBox.SelectedItem.ToString();
-            string subject = SubjectBox.Text;
-            string body = BodyBox.Text;
+            string receiver;
+            string subject;
+            string body;
+
+            try
+            {
+                receiver = ReceiverBox.SelectedItem.ToString();
+                subject = SubjectBox.Text;
+                body = BodyBox.Text;
+            }
+            catch
+            {
+                receiver = null;
+                subject = null;
+                body = null;
+            }
 
             // send the email
             _adminController.SendEmail(receiver, subject, body);
