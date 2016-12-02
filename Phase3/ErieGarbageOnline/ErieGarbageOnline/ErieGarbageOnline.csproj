@@ -52,6 +52,7 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -61,6 +62,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Test\FuzzTester.cs" />
     <Compile Include="Views\Admin\RespondToMessageWindow.xaml.cs">
       <DependentUpon>RespondToMessageWindow.xaml</DependentUpon>
     </Compile>

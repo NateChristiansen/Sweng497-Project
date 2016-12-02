@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using ErieGarbageOnline.Database;
+using ErieGarbageOnline.Test;
 using ErieGarbageOnline.Views;
 
 namespace ErieGarbageOnline.Controllers
@@ -12,6 +14,7 @@ namespace ErieGarbageOnline.Controllers
         {
             view = new LoginWindow(this);
             view.Show();
+            //new FuzzTester().TestLogin(view, 15, 0);
         }
 
         public void Login()
