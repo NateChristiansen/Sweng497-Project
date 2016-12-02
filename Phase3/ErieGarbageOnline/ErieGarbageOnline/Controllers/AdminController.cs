@@ -17,9 +17,9 @@ namespace ErieGarbageOnline.Controllers
             User = admin;
             view = new AdminWindow(this) {WelcomeLabel = {Content = "Welcome, " + admin.Email}};
             FillEmailReceiverBox();
+            RefreshMessageList();
             GetDueBills();
             view.Show();
-
         }
 
         public void CreateAdmin(Admin newAdmin)
@@ -88,55 +88,36 @@ namespace ErieGarbageOnline.Controllers
             }
         }
 
-        public RespondToMessageWindow GetMessageResponseFromIndex(int index)
+        public void RespondToMessage()
         {
-            if (index >= 0 && index < Database.AllMessages().Count)
+            var msg = view.MessageTable.SelectedItem as Message;
+            var msgResponseView = new RespondToMessageWindow(msg);
+            msgResponseView.ShowDialog();
+            if (msgResponseView.RespondToMsgBox == null || msgResponseView.RespondToMsgBox.Text.Equals(""))
             {
-                var msg = Database.AllMessages()[index];
-                if (msg.CheckValidity())
-                {
-                    var msgResponseView = new RespondToMessageWindow(msg, this);
-                    msg.Viewed = true;
-                    return msgResponseView;
-                }
-
+                MessageBox.Show(view, "No message to send");
             }
-
-            return null;
-        }
-
-        public void RespondToMessage(Message msg, RespondToMessageWindow msgResponseView)
-        {
-            // Make sure message is selected
-            if (msgResponseView != null)
+            else
             {
-                if (msgResponseView.RespondToMsgBox == null || msgResponseView.RespondToMsgBox.Text.Equals(""))
-                {
-                    MessageBox.Show(view, "No message to send");
-                }
-                else
-                {
-                    var customer = GetCustomerById(Convert.ToInt32(msgResponseView.MsgCustomerIdBox.Text));
+                var customer = GetCustomerById(Convert.ToInt32(msgResponseView.MsgCustomerIdBox.Text));
 
-                    if (customer != null)
+                if (customer != null)
+                {
+                    string subject = "EGO: Response to your " + msgResponseView.MsgTypeBox;
+                    string body = msgResponseView.RespondToMsgBox.Text;
+                    if (SendEmail(customer.Email, subject, body))
                     {
-                        string subject = "EGO: Response to your " + msgResponseView.MsgTypeBox;
-                        string body = msgResponseView.RespondToMsgBox.Text;
-                        if (SendEmail(customer.Email, subject, body))
-                        {
-                            msg.Responded = true;
-                            msgResponseView.Close();
-                            RefreshMessageList();
-                        }
+                        Database.RespondToMessage(msg);
+                        RefreshMessageList();
                     }
                 }
             }
+            RefreshMessageList();
         }
 
-        private void RefreshMessageList()
+        public void RefreshMessageList()
         {
-
-            view.dataGrid.Items.Refresh();
+            view.MessageTable.ItemsSource = Database.AllMessages();
         }
 
         private Customer GetCustomerById(int custId)

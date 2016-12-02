@@ -11,7 +11,8 @@ namespace ErieGarbageOnline.Models
 
         public new bool CheckValidity()
         {
-            return EGODatabase.Create().Bills().Any(bill => bill.Id == BillId) && base.CheckValidity();
+            var x = EGODatabase.Create().Bills();
+            return x.Any(bill => bill.Id == BillId) && base.CheckValidity();
         }
     }
 }

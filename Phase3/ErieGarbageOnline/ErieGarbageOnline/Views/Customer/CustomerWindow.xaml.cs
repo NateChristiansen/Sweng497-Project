@@ -38,6 +38,7 @@ namespace ErieGarbageOnline.Views.Customer
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
             controller.Logout();
+            Close();
         }
     }
 }

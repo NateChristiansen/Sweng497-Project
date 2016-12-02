@@ -5,12 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ErieGarbageOnline.Views.Customer"
              mc:Ignorable="d" 
-             d:DesignHeight="321" d:DesignWidth="529">
+             d:DesignHeight="260" d:DesignWidth="529">
     <Grid Background="White">
-        <Label Content="Suspension End DateDue" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0" />
+        <Label Content="Suspension End Date" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0" />
         <DatePicker x:Name="SuspensionDate" HorizontalAlignment="Left" Margin="136,10,0,0" VerticalAlignment="Top" />
         <Label Content="Reason" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Message" AcceptsReturn="True" HorizontalAlignment="Left" Margin="10,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="244" Width="509"/>
+        <TextBox x:Name="Message" AcceptsReturn="True" HorizontalAlignment="Left" Margin="10,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="183" Width="509"/>
 
     </Grid>
 </UserControl>

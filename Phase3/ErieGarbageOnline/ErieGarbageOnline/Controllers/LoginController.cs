@@ -6,8 +6,8 @@ namespace ErieGarbageOnline.Controllers
 {
     public class LoginController
     {
-        private LoginWindow view;
-        private EGODatabase database = EGODatabase.Create();
+        private readonly LoginWindow view;
+        private readonly EGODatabase database = EGODatabase.Create();
         public LoginController()
         {
             view = new LoginWindow(this);

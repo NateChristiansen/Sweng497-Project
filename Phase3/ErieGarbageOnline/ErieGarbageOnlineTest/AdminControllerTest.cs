@@ -21,8 +21,6 @@ namespace ErieGarbageOnlineTest
 
 
             var adminController = new AdminController(admin);
-            var view = adminController.GetMessageResponseFromIndex(-1);
-            Assert.IsNull(view);
         }
     }
 }

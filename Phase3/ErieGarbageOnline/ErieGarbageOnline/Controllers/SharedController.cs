@@ -1,7 +1,5 @@
-﻿using System.Windows;
-using ErieGarbageOnline.Database;
+﻿using ErieGarbageOnline.Database;
 using ErieGarbageOnline.Models;
-using ErieGarbageOnline.Views;
 
 namespace ErieGarbageOnline.Controllers
 {
