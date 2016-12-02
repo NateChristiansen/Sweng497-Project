@@ -1,0 +1,22 @@
+﻿using System;
+
+namespace ErieGarbageOnline.Models
+{
+    [Serializable]
+<<<<<<< HEAD
+    class Customer : User
+=======
+    public class Customer : DbItem
+>>>>>>> 61deca5106443c65967b374a8ecca15e675bb6fc
+    {
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
+        public string State { get; set; }
+        public string PostalCode { get; set; }
+        public override bool CheckValidity()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

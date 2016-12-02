@@ -1,0 +1,29 @@
+﻿using System.Collections.Generic;
+
+namespace ErieGarbageOnline.Models
+{
+    class Admin : DbItem
+    {
+<<<<<<< HEAD
+=======
+        public int AdminId { get; set; }
+>>>>>>> e1a2f48d0edca86e941290420cbb7de53a2d4d55
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+<<<<<<< HEAD
+        public List<Message> MessageList;
+        public List<Customer> CustomerList;
+        public List<Admin> AdminList;
+=======
+        public override bool CheckValidity()
+        {
+            if (Firstname == null) return false;
+            if (Lastname == null) return false;
+            if (Email == null) return false;
+            return true;
+        }
+>>>>>>> e1a2f48d0edca86e941290420cbb7de53a2d4d55
+    }
+}
