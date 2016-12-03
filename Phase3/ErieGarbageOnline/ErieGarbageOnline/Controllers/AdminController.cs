@@ -96,14 +96,12 @@ namespace ErieGarbageOnline.Controllers
 
         }
 
-        public void RespondToMessage()
+        public void RespondToMessage(Message msg, RespondToMessageWindow msgResponseView)
         {
-            var msg = view.MessageTable.SelectedItem as Message;
-            var msgResponseView = new RespondToMessageWindow(msg);
-            msgResponseView.ShowDialog();
             if (msgResponseView.RespondToMsgBox == null || msgResponseView.RespondToMsgBox.Text.Equals(""))
             {
-                MessageBox.Show(view, "No message to send");
+                MessageBox.Show(msgResponseView, "No message to send");
+                msgResponseView.BringIntoView();
             }
             else
             {
@@ -117,6 +115,7 @@ namespace ErieGarbageOnline.Controllers
                     {
                         Database.RespondToMessage(msg);
                         RefreshMessageList();
+                        msgResponseView.Close();
                     }
                 }
             }

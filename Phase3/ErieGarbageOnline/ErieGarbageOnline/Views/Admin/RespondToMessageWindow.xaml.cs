@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using ErieGarbageOnline.Controllers;
 using ErieGarbageOnline.Database;
 using ErieGarbageOnline.Models;
 
@@ -10,10 +11,13 @@ namespace ErieGarbageOnline.Views
     public partial class RespondToMessageWindow : Window
     {
         private readonly Message _msg;
+        private AdminController _adminController;
         private readonly EGODatabase _database = EGODatabase.Create();
-        public RespondToMessageWindow(Message msg)
+        public RespondToMessageWindow(Message msg, AdminController a)
         {
             _msg = msg;
+            _database.SetMessageViewed(_msg);
+            _adminController = a;
             InitializeComponent();
             InitializeMessageResponseWindow();
             _database.ViewMessage(msg);
@@ -29,7 +33,7 @@ namespace ErieGarbageOnline.Views
 
         private void RespondToMsgButton_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            _adminController.RespondToMessage(_msg, this);
         }
     }
 }

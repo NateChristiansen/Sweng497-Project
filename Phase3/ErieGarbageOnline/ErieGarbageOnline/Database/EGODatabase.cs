@@ -354,6 +354,22 @@ namespace ErieGarbageOnline.Database
             }
         }
 
+        public bool SetMessageViewed(Message m)
+        {
+            try
+            {
+                var msg = GetMessage(m);
+                if (msg == null) return false;
+                msg.Viewed = true;
+                SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public bool RespondToMessage(Message m)
         {
             try

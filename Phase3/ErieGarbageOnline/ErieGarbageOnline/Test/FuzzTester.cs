@@ -26,8 +26,8 @@ namespace ErieGarbageOnline.Test
                 try
                 {
                     r = new Random();
-                    login.EmailField.Text = GetRandomString(r.Next(100));
-                    login.PasswordField.Password = GetRandomString(r.Next(100));
+                    login.EmailField.Text = GetRandomString(r.Next(1000));
+                    login.PasswordField.Password = GetRandomString(r.Next(1000));
 
                     login.LoginButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                     sb.Append("SUCCESS: EMAIL: " + login.EmailField.Text + " PASSWORD: " + login.PasswordField.Password + "\n");
