@@ -19,7 +19,7 @@
             </TabItem>
             <TabItem Header="View Messages">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="MessageTable" ItemsSource="{Binding Source=Message}" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="306" Width="559">
+                    <DataGrid x:Name="MessageTable" IsReadOnly="true" ItemsSource="{Binding Source=Message}" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="306" Width="559">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Customer ID" Binding="{Binding CustomerId}" />
                             <DataGridTextColumn Header="Date" Binding="{Binding Date}" />
@@ -52,7 +52,7 @@
             </TabItem>
             <TabItem Header="Due Payments">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="DuePayments" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Height="281" Width="558" AutoGenerateColumns="False" ItemsSource="{Binding Source=Bill}">
+                    <DataGrid x:Name="DuePayments" IsReadOnly="true" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Height="281" Width="558" AutoGenerateColumns="False" ItemsSource="{Binding Source=Bill}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Customer" Binding="{Binding Path=CustomerId}" />
                             <DataGridTextColumn Header="Due Date" Binding="{Binding Path=DueDate, StringFormat=dd/MM/yyyy}" />
@@ -63,7 +63,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Label Name="WelcomeLabel" Content="Welcome [name]" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="99"/>
+        <Label Name="WelcomeLabel" Content="Welcome [name]" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="Auto"/>
         <Button Name ="LogoutButton" Content="Logout" HorizontalAlignment="Left" Margin="488,41,0,0" VerticalAlignment="Top" Width="75" Click="LogoutButton_Click"/>
 
     </Grid>

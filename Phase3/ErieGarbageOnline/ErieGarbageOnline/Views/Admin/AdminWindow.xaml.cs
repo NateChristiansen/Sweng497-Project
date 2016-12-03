@@ -68,7 +68,10 @@ namespace ErieGarbageOnline.Views
         
         private void MessageRespondButton_Click(object sender, RoutedEventArgs e)
         {
-            _adminController.RespondToMessage();
+            var msg = this.MessageTable.SelectedItem as Message;
+            var msgResponseView = new RespondToMessageWindow(msg, _adminController);
+            msgResponseView.ShowDialog();
+            _adminController.RefreshMessageList();
         }
     }
 }
