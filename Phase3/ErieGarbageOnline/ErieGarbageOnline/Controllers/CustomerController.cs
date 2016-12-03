@@ -30,24 +30,44 @@ namespace ErieGarbageOnline.Controllers
                     MessageBody = view.Complaint.Message.Text,
                     CustomerId = User.Id
                 });
+                view.Complaint.Message.Text = "";
             }
             else if (view.DisputeButton.IsChecked == true)
             {
-                success = Database.AddDispute(new Dispute
+                if (!string.IsNullOrEmpty(view.Dispute.BillIdBox.Text))
                 {
-                    MessageBody = view.Dispute.Message.Text,
-                    BillId = int.Parse(view.Dispute.BillIdBox.Text),
-                    CustomerId = User.Id
-                });
+                    success = Database.AddDispute(new Dispute
+                    {
+                        MessageBody = view.Dispute.Message.Text,
+                        BillId = int.Parse(view.Dispute.BillIdBox.Text),
+                        CustomerId = User.Id
+                    });
+                    if (!string.IsNullOrEmpty(view.Dispute.Message.Text))
+                    {
+                        view.Dispute.BillIdBox.Text = "";
+                        view.Dispute.Message.Text = "";
+                    }
+
+                }
+
             }
             else if (view.SuspensionButton.IsChecked == true)
             {
-                success = Database.AddSuspension(new Suspension
+                if (view.Suspension.SuspensionDate.SelectedDate != null)
                 {
-                    MessageBody = view.Suspension.Message.Text,
-                    CustomerId = User.Id,
-                    SuspensionEnds = (DateTime) view.Suspension.SuspensionDate.SelectedDate
-                });
+                    success = Database.AddSuspension(new Suspension
+                    {
+                        MessageBody = view.Suspension.Message.Text,
+                        CustomerId = User.Id,
+                        SuspensionEnds = (DateTime)view.Suspension.SuspensionDate.SelectedDate
+                    });
+                    if (!string.IsNullOrEmpty(view.Suspension.Message.Text))
+                    {
+                        view.Suspension.SuspensionDate.SelectedDate = null;
+                        view.Suspension.Message.Text = "";
+                    }
+
+                }
             }
             if (success)
             {

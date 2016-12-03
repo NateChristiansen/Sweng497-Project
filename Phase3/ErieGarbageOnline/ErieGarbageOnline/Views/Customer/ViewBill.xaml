@@ -9,10 +9,10 @@
     <Grid>
         <Button x:Name="PayBillButton" Content="Pay Bill" HorizontalAlignment="Left" Margin="10,242,0,0" VerticalAlignment="Top" Width="75" Click="PayBillButton_Click"/>
         <Button x:Name="CacnelButton" Content="Cancel" HorizontalAlignment="Left" Margin="210,242,0,0" VerticalAlignment="Top" Width="75" Click="CacnelButton_Click"/>
-        <Label Content="Date of Bill" HorizontalAlignment="Left" Margin="47,78,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="DueDateBox" HorizontalAlignment="Left" Height="23" Margin="129,81,0,0" IsEnabled="False" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="label" Content="Amount Due" HorizontalAlignment="Left" Margin="47,109,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="AmountDueBox" HorizontalAlignment="Left" Height="23" Margin="129,112,0,0" TextWrapping="Wrap" Text="" IsEnabled="False" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Date of Bill" HorizontalAlignment="Left" Margin="14,78,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="DueDateBox" HorizontalAlignment="Left" Height="23" Margin="96,81,0,0" IsEnabled="False" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="163"/>
+        <Label x:Name="label" Content="Amount Due" HorizontalAlignment="Left" Margin="14,109,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="AmountDueBox" HorizontalAlignment="Left" Height="23" Margin="96,112,0,0" TextWrapping="Wrap" Text="" IsEnabled="False" VerticalAlignment="Top" Width="163"/>
 
     </Grid>
 </Window>

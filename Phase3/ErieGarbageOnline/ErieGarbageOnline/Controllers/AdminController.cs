@@ -10,16 +10,16 @@ namespace ErieGarbageOnline.Controllers
 {
     public class AdminController : SharedController
     {
-        private readonly AdminWindow view;
+        private readonly AdminWindow _view;
 
         public AdminController(Admin admin)
         {
             User = admin;
-            view = new AdminWindow(this) {WelcomeLabel = {Content = "Welcome, " + admin.Email}};
+            _view = new AdminWindow(this) {WelcomeLabel = {Content = "Welcome, " + admin.Email}};
             FillEmailReceiverBox();
             RefreshMessageList();
             GetDueBills();
-            view.Show();
+            _view.Show();
         }
 
         public void CreateAdmin(Admin newAdmin)
@@ -28,17 +28,17 @@ namespace ErieGarbageOnline.Controllers
             {
                 if (Database.AddAdmin(newAdmin))
                 {
-                    MessageBox.Show(view, "Admin " + newAdmin.Email + " has been added to the database.");
+                    MessageBox.Show(_view, "Admin " + newAdmin.Email + " has been added to the database.");
                 }
                 else
                 {
-                    MessageBox.Show(view, "User already exists in the database.");
+                    MessageBox.Show(_view, "User already exists in the database.");
                 }
                 ClearCreateAdminFields();
             }
             else
             {
-                MessageBox.Show(view, "Could not add the admin to the database. Check to make sure fields are correct.");
+                MessageBox.Show(_view, "Could not add the admin to the database. Check to make sure fields are correct.");
             }
 
         }
@@ -124,7 +124,7 @@ namespace ErieGarbageOnline.Controllers
 
         public void RefreshMessageList()
         {
-            view.MessageTable.ItemsSource = Database.AllMessages();
+            _view.MessageTable.ItemsSource = Database.AllMessages();
         }
 
         private Customer GetCustomerById(int custId)
@@ -134,16 +134,16 @@ namespace ErieGarbageOnline.Controllers
 
         private void ClearCreateAdminFields()
         {
-            view.EmailBox.Clear();
-            view.PasswordBox.Clear();
-            view.FirstNameBox.Clear();
-            view.LastNameBox.Clear();
+            _view.EmailBox.Clear();
+            _view.PasswordBox.Clear();
+            _view.FirstNameBox.Clear();
+            _view.LastNameBox.Clear();
         }
 
         private void ClearEmailFields()
         {
-            view.SubjectBox.Clear();
-            view.BodyBox.Clear();;
+            _view.SubjectBox.Clear();
+            _view.BodyBox.Clear();;
         }
 
         private void FillEmailReceiverBox()
@@ -151,13 +151,13 @@ namespace ErieGarbageOnline.Controllers
             var custList = Database.Customers();
             foreach (var customer in custList)
             {
-                view.ReceiverBox.Items.Add(customer.Email);
+                _view.ReceiverBox.Items.Add(customer.Email);
             }
         }
 
         public void GetDueBills()
         {
-            view.DuePayments.ItemsSource = Database.Bills().Where(bill => !bill.Paid);
+            _view.DuePayments.ItemsSource = Database.Bills().Where(bill => !bill.Paid);
         }
     }
 }
