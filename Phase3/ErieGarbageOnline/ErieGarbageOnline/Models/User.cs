@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace ErieGarbageOnline.Models
 {
@@ -15,6 +16,9 @@ namespace ErieGarbageOnline.Models
             if (Password == null) return false;
             if (Firstname == null) return false;
             if (Lastname == null) return false;
+            if (Password.Length < 8) return false;
+            if (!Regex.IsMatch(Password, "[A-Z]")) return false;
+            if (!Regex.IsMatch(Password, "[0-9]")) return false;
             return true;
         }
     }

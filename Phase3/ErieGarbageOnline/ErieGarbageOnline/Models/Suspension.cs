@@ -3,7 +3,7 @@
 namespace ErieGarbageOnline.Models
 {
     [Serializable]
-    class Suspension : Message
+    public class Suspension : Message
     {
         public DateTime SuspensionEnds { get; set; }
 
