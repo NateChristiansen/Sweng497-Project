@@ -82,6 +82,7 @@ namespace ErieGarbageOnline.Controllers
         public void OpenBill()
         {
             var bill = view.Bills.SelectedItem as Bill;
+            if (bill == null) return;
             var billwindow = new ViewBill(bill);
             billwindow.ShowDialog();
             GetBills();

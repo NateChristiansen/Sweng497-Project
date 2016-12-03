@@ -207,6 +207,7 @@ namespace ErieGarbageOnline.Database
             {
                 var set = data[Databases.Complaints];
                 SetId(set, complaint);
+                if (data[Databases.Customers].All(c => c.Id == complaint.CustomerId)) return false;
                 if (!complaint.CheckValidity()) return false;
                 set.Add(complaint);
                 SaveChanges();
@@ -224,6 +225,7 @@ namespace ErieGarbageOnline.Database
             {
                 var set = data[Databases.Bills];
                 SetId(set, bill);
+                if (data[Databases.Customers].All(c => c.Id == bill.CustomerId)) return false;
                 if (!bill.CheckValidity()) return false;
                 set.Add(bill);
                 SaveChanges();
@@ -293,6 +295,8 @@ namespace ErieGarbageOnline.Database
             {
                 var set = data[Databases.Disputes];
                 SetId(set, dispute);
+                if (data[Databases.Customers].All(c => c.Id == dispute.CustomerId)) return false;
+                if (data[Databases.Bills].All(b => b.Id == dispute.BillId)) return false;
                 if (!dispute.CheckValidity()) return false;
                 set.Add(dispute);
                 SaveChanges();
@@ -310,6 +314,7 @@ namespace ErieGarbageOnline.Database
             {
                 var set = data[Databases.Suspensions];
                 SetId(set, suspension);
+                if (data[Databases.Customers].All(c => c.Id == suspension.CustomerId)) return false;
                 if (!suspension.CheckValidity()) return false;
                 set.Add(suspension);
                 SaveChanges();

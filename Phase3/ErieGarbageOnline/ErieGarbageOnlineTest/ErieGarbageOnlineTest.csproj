@@ -55,9 +55,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="AdminControllerTest.cs" />
+    <Compile Include="ControllerTests\AdminControllerTest.cs" />
+    <Compile Include="ModelTests\AdminTest.cs" />
+    <Compile Include="ModelTests\SuspensionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EGODatabaseTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ErieGarbageOnline\ErieGarbageOnline.csproj">

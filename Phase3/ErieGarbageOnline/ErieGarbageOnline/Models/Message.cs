@@ -14,7 +14,7 @@ namespace ErieGarbageOnline.Models
         public bool Responded { get; set; }
         public override bool CheckValidity()
         {
-            if (EGODatabase.Create().Customers().All(c => c.Id != CustomerId)) return false;
+            if (CustomerId < 0) return false;
             if (string.IsNullOrWhiteSpace(MessageBody)) return false;
             return true;
         }
