@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ErieGarbageOnline.Views.Login"
         mc:Ignorable="d"
         Title="Register" Height="421" Width="570">
-    <Grid>
+    <Grid Name="RegisterGrid">
         <Label Content="Email:" HorizontalAlignment="Left" Margin="296,26,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="EmailBox" HorizontalAlignment="Left" Height="23" Margin="364,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label Content="Password:" HorizontalAlignment="Left" Margin="296,74,0,0" VerticalAlignment="Top"/>
