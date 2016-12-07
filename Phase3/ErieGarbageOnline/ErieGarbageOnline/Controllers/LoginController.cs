@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using ErieGarbageOnline.Database;
+using ErieGarbageOnline.Models;
 using ErieGarbageOnline.Test;
 using ErieGarbageOnline.Views;
 

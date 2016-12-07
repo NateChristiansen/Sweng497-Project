@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ErieGarbageOnline.Views.Login"
         mc:Ignorable="d"
-        Title="Register" Height="300" Width="300">
+        Title="Register" Height="421" Width="570">
     <Grid>
-        
+        <Label Content="Email:" HorizontalAlignment="Left" Margin="296,26,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="EmailBox" HorizontalAlignment="Left" Height="23" Margin="364,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="296,74,0,0" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Height="23" Margin="364,75,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.547,4.771"/>
+        <Label Content="First Name:" HorizontalAlignment="Left" Margin="79,33,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="FirstNameBox" HorizontalAlignment="Left" Height="23" Margin="147,34,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.547,4.771"/>
+        <Label Content="Last Name:" HorizontalAlignment="Left" Margin="79,72,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="LastNameBox" HorizontalAlignment="Left" Height="23" Margin="147,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.547,4.771"/>
+        <Button x:Name="RegisterButton" Content="Submit" HorizontalAlignment="Left" Margin="237,327,0,0" VerticalAlignment="Top" Width="75" Click="RegisterButton_Click"/>
+        <Label Content="Address:" HorizontalAlignment="Left" Margin="79,107,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="AddressBox" HorizontalAlignment="Left" Height="23" Margin="147,109,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.547,4.771"/>
+        <Label Content="City:" HorizontalAlignment="Left" Margin="79,142,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="CityBox" HorizontalAlignment="Left" Height="23" Margin="147,144,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.547,4.771"/>
+        <Label Content="State/&#xD;&#xA;Province:" HorizontalAlignment="Left" Margin="79,174,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="StateBox" HorizontalAlignment="Left" Height="23" Margin="147,185,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.547,4.771"/>
+        <Label Content="Country:" HorizontalAlignment="Left" Margin="79,224,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="CountryBox" HorizontalAlignment="Left" Height="23" Margin="147,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.547,4.771"/>
+        <Label Content="Postal &#10;Code:" HorizontalAlignment="Left" Margin="79,255,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="PostalCodeBox" HorizontalAlignment="Left" Height="23" Margin="147,265,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.547,4.771"/>
+
     </Grid>
 </Window>

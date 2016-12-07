@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 using ErieGarbageOnline.Controllers;
+using ErieGarbageOnline.Views.Login;
 
 namespace ErieGarbageOnline.Views
 {
@@ -31,6 +32,12 @@ namespace ErieGarbageOnline.Views
         {
             if (e.Key == Key.Enter)
                 controller.Login();
+        }
+
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            var r = new Register();
+            r.Show();
         }
     }
 }

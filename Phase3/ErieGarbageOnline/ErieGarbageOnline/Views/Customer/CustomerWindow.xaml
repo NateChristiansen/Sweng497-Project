@@ -15,7 +15,7 @@
                     <StackPanel x:Name="RadioGroup" Margin="100,10,343,265">
                         <RadioButton x:Name="ComplaintButton" Content="Complaint" Checked="MessageTypeClicked" GroupName="MessageType"/>
                         <RadioButton x:Name="DisputeButton" Content="Bill Dispute" Checked="MessageTypeClicked"  GroupName="MessageType"/>
-                        <RadioButton x:Name="SuspensionButton" Content="Requrest Suspension" Checked="MessageTypeClicked"  GroupName="MessageType"/>
+                        <RadioButton x:Name="SuspensionButton" Content="Request Suspension" Checked="MessageTypeClicked"  GroupName="MessageType"/>
                     </StackPanel>
                     <customer:Complaint x:Name="Complaint" Margin="0,66,0,0" Visibility="Hidden"/>
                     <customer:Dispute x:Name="Dispute" HorizontalAlignment="Left" Margin="0,66,0,0" VerticalAlignment="Top" Visibility="Hidden"/>

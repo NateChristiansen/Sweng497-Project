@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using ErieGarbageOnline.Controllers;
 
 namespace ErieGarbageOnline.Views.Login
 {
@@ -19,9 +8,43 @@ namespace ErieGarbageOnline.Views.Login
     /// </summary>
     public partial class Register : Window
     {
+        private RegisterController _controller;
         public Register()
         {
             InitializeComponent();
+        }
+
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            var cust = new Models.Customer()
+            {
+                Address = this.AddressBox.Text,
+                City = this.CityBox.Text,
+                Country = this.CountryBox.Text,
+                State = this.StateBox.Text,
+                Email = this.EmailBox.Text,
+                Password = this.PasswordBox.Password,
+                Firstname = this.FirstNameBox.Text,
+                Lastname = this.LastNameBox.Text,
+                PostalCode = this.PostalCodeBox.Text
+            };
+
+            _controller = new RegisterController(this);
+
+            string msgBox = "Please check your entry and try submitting again.";
+
+            if (_controller.RegisterCustomer(cust))
+            {
+                msgBox = "You have been successfully registed. Welcome to EGO!";
+                MessageBox.Show(this, msgBox);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show(this, msgBox);
+            }
+
+
         }
     }
 }
