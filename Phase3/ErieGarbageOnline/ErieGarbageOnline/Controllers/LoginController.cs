@@ -15,7 +15,7 @@ namespace ErieGarbageOnline.Controllers
         {
             view = new LoginWindow(this);
             view.Show();
-            //new FuzzTester().TestLogin(view, 1000, 0);
+            //new FuzzTester().TestLogin(view, 100, 0);
         }
 
         public void Login()

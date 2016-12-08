@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 using ErieGarbageOnline.Controllers;
+using ErieGarbageOnline.Test;
 using ErieGarbageOnline.Views.Login;
 
 namespace ErieGarbageOnline.Views
@@ -38,6 +39,7 @@ namespace ErieGarbageOnline.Views
         {
             var r = new Register();
             r.Show();
+            //new FuzzTester().TestRegisterForm(r, 100, 0);
         }
     }
 }

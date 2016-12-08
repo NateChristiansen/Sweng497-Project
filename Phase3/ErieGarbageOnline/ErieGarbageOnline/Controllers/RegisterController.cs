@@ -73,7 +73,7 @@ namespace ErieGarbageOnline.Controllers
         /// Collects all text boxes on the view and stores them in a list
         /// </summary>
         /// <returns> List of text boxes found on the view </returns>
-        private IEnumerable<TextBox> GetAllTextBoxes()
+        public IEnumerable<TextBox> GetAllTextBoxes()
         {
             var collection = _view.RegisterGrid.Children.OfType<TextBox>();
 
